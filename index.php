@@ -37,7 +37,8 @@ $title = 'Club Page';
 				<nav role="navigation">
 					<div id="navigation">
 					    <?php 
-					    $twig->render('layout/navigation.html', array("navigation" => new Navigation()));
+					    $nav = new Navigation();
+					    echo $twig->render('layout/navigation.html', array("entries" => $nav->entries));
 					    ?>						
 					</div>
 				</nav>
