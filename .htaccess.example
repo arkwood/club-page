@@ -1,0 +1,21 @@
+RewriteEngine On
+RewriteRule ^([^/,^img]*)/blog/([^/]*)/([^/]*)/([^/]*)$ /blog.php?lang=$1&blog=$2&page=$3&blogpw=$4 [L]
+RewriteRule ^([^/,^img]*)/blog/([^/]*)/([^/]*)$ /blog.php?lang=$1&blog=$2&page=$3 [L]
+RewriteRule ^([^/,^img]*)/blog/([^/]*)$ /blog.php?lang=$1&blog=$2 [L]
+RewriteRule ^([^/,^img]*)/blog$ /blog.php?lang=$1 [L]
+
+RewriteRule ^$ /blog.php [L]
+RewriteRule ^([^/,^img]*)/$ /index.php?lang=$1 [L]
+
+RewriteRule ^archive$ /archive.php [L]
+RewriteRule ^([^/,^img]*)/archive$ /archive.php?lang=$1 [L]
+
+RewriteRule ^disclaimer$ /disclaimer.php [L]
+RewriteRule ^([^/,^img]*)/disclaimer$ /disclaimer.php?lang=$1 [L]
+
+RewriteRule ^rss$ /rss.php [L]
+RewriteRule ^([^/,^img]*)/rss$ /rss.php?lang=$1 [L]
+
+RewriteRule ^([^/,^img]*)/search$ /search.php [L]
+RewriteRule ^([^/,^img]*)/search/([^/]*) /search.php?searchTerm=$2&lang=$1 [L]
+RewriteRule ^([^/,^img]*)/search/([^/]*)/([0-9]*) /search.php?searchTerm=$2&page=$3&lang=$1 [L]

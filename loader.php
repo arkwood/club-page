@@ -1,12 +1,21 @@
-<?php
+    <?php
 require_once 'config.php';
-require_once BASEPATH . 'function.php';
+require_once 'function.php';
 
 /**
  * initialize session and set header
  */
 session_start();
-header('Content-Type: text/html; charset=utf-8');
+if ($_GET[CONTENT_TYPE_PARAM] == 'json') {
+    header('Content-Type: text/json; charset=utf-8');
+}
+else if ($_GET[CONTENT_TYPE_PARAM] == 'xml') {
+    header('Content-Type: text/xml; charset=utf-8');
+}
+else {
+    header('Content-Type: text/html; charset=utf-8');
+}
+
 
 /** 
  * connect to the database
