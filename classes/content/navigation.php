@@ -1,6 +1,4 @@
 <?php
-require_once CLASSFOLDER . 'dbobject.php';
-
 class NavigationEntry extends DBObject {
     
     public $label = '';
