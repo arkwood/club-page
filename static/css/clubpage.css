@@ -1,0 +1,16 @@
+body {
+    background-color: #999;
+}
+
+#banner {
+    color: #f00;
+    padding: 20px;
+    font-size: 18px;
+}
+
+#navigation .navbar {
+    margin-top: 5px;
+    background-color: #fff;
+    border: 0px;
+    border-radius: 0px;
+}

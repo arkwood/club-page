@@ -1,19 +1,4 @@
-
 <?php
-// development mode
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
-define('BASE_PATH', dirname(__FILE__) . '/');
-
-// initialize template engine
-require_once BASE_PATH . 'lib/twig/lib/Twig/Autoloader.php';
-Twig_Autoloader::register();
-$twigLoader = new Twig_Loader_Filesystem(BASE_PATH . 'templates');
-$twig = new Twig_Environment($twigLoader, array(
-    'cache' => BASE_PATH . 'tpl_compile/cache',
-));
-
 // initialize system
 require_once 'loader.php';
 // defaults
@@ -33,18 +18,24 @@ $title = 'Club Page';
 	<body>		
 		<header role="banner">
 			<div class="container">
-				<div id="banner"></div>
-				<nav role="navigation">
-					<div id="navigation">
-					    <?php 
-					    $nav = new Navigation();
-					    echo $twig->render('layout/navigation.html', array("entries" => $nav->entries));
-					    ?>						
-					</div>
-				</nav>
+				<div id="banner" class="hidden-xs row">
+				    <div class="col-xs-2 center">
+				        <i class="fa fa-soccer-ball-o fa-4x"></i>    
+				    </div>
+				    <div class="col-xs-5 font-white">
+				        <b>Club Page</b> - Content-Management-System<br/>and Club-Management    
+				    </div>
+				</div>
+				<div id="navigation">
+				    <?php 
+				    $nav = new Navigation();
+				    echo $twig->render('layout/navigation.html', array("basepath" => BASEURL, "entries" => $nav->entries));
+				    ?>						
+				</div>
+				
 			</div>
 		</header>
-		<div id="content" class="container">
+		<div id="main" class="container">
 			<?php 
 			if (!isset($GLOBALS[GLOBALSCRIPTCONTENT]))
 				require_once DEFAULT_CONTENT;

@@ -1,6 +1,28 @@
-    <?php
+<?php
 require_once 'config.php';
 require_once 'function.php';
+
+define('BASE_PATH', dirname(__FILE__) . '/');
+
+/*
+ * initialize template engine
+ */
+ // load Twig core
+require_once BASE_PATH . 'lib/twig/lib/Twig/Autoloader.php';
+Twig_Autoloader::register();
+// load Twig i18n extension
+require_once BASE_PATH . 'lib/twig-extensions/lib/Twig/Extensions/Autoloader.php';
+Twig_Extensions_Autoloader::register();
+// template folder
+$twigLoader = new Twig_Loader_Filesystem(BASE_PATH . 'templates');
+// declare twig environment
+$twig = new Twig_Environment($twigLoader);
+/*, array(
+    'cache' => BASE_PATH . 'tpl_compile/cache',
+)); */
+// add extension for i18n
+$twig->addExtension(new Twig_Extensions_Extension_I18n());
+
 
 /**
  * initialize session and set header
@@ -49,6 +71,7 @@ function includeClass($fs) {
 	foreach ($subDirs as $dir)
 		includeClass($dir);
 }
+require_once CLASSFOLDER . '/dbobject.php';
 includeClass(CLASSFOLDER);
 
 
@@ -122,4 +145,6 @@ if (strpos(AVAILABLE_LOCALES, $providedLocale) === false) {
 setlocale(LC_TIME, $providedLocale);
 $_SESSION["lang"] = $providedLocale;
 define('CURRENT_LOCALE', $providedLocale);
+
+
 ?>
