@@ -1,9 +1,10 @@
+
 <?php
 // development mode
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-define('BASE_PATH', dirname(__FILE__));
+define('BASE_PATH', dirname(__FILE__) . '/');
 
 // initialize template engine
 require_once BASE_PATH . 'lib/twig/lib/Twig/Autoloader.php';
