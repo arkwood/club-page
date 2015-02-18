@@ -26,7 +26,7 @@ class Navigation {
     public $entries;
     
     function __construct() {
-        loadEntries();
+        $this->loadEntries();
     }
     
     function loadEntries() {
