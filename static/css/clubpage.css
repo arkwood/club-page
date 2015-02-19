@@ -14,3 +14,11 @@ body {
     border: 0px;
     border-radius: 0px;
 }
+#navigation #main-nav-collapse .subnav {
+    width: 100%;
+    position: absolute;
+    top: 50px;
+    left: 0px;
+    background-color: #666;
+    color: #fff;
+}

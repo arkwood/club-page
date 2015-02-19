@@ -1,5 +1,22 @@
 $(document).ready(function() {
 	// start commands
+	
+	/*
+	 * Navigation and Header
+	 */
+	$('#main-nav-collapse li').mouseover(function(e) {
+		$('.subnav[data-nav-content]').hide();
+		var navElement = $(e.target).closest('[data-nav-id]');
+		if (navElement.length > 0) {
+			var navID = $(navElement).attr('data-nav-id');
+			$('.subnav[data-nav-content="' + navID + '"]').show();
+		}
+	});
+	
+	$('#main-nav-collapse li').mouseout(function(e) {
+		console.log('hide');
+		$('.subnav[data-nav-content]').hide();
+	});
 });
 
 
