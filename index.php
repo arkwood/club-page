@@ -28,7 +28,7 @@ $title = 'Club Page';
 				</div>
 				<div id="navigation">
 				    <?php 
-				    $nav = new Navigation();
+				    $nav = new Navigation(true);
 				    echo $twig->render('layout/navigation.html', array("basepath" => BASEURL, "entries" => $nav->entries));
 				    ?>						
 				</div>
