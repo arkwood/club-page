@@ -1,38 +1,30 @@
 <nav class="navbar navbar-default">
-	<div class="container-fluid">
-		<!-- Brand and toggle get grouped for better mobile display -->
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav-collapse">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="{{constant('BASEURL')}}"> <i class="fa fa-home fa-2x"></i> </a>
-		</div>
-
-		<div class="collapse navbar-collapse" id="main-nav-collapse">
-			<ul class="nav navbar-nav">
-				{% for item in entries %}
-				<li {% if item.subNavigation %}data-nav-id="{{item.ID}}" {% endif %}>
-					<!-- main navigation entry -->
-					<a href="{{constant('BASEURL')}}{{item.target}}"> {% if item.icon %} <i class="fa {{item.icon}}"></i> {% endif %}
-					{{item.label}} </a>
-					<!-- sub navigation -->
-					{% if item.subNavigation %}
-						<div style="display: none;" class="subnav" data-nav-content="{{item.ID}}">
-							{% for sub in item.subNavigation %}
-								<a class="col-xs-6 col-md-3" href="{{constant('BASEURL')}}{{sub.target}}">{{sub.label}}</a>
-							{% endfor %}
-						</div>
-					{% endif %}
-				</li>
-				{% endfor %}
-			</ul>
-		</div>
-		
+	<div class="container-fluid" id="main-nav-collapse">	
+		<div class="nav-entry home-icon">
+			<a href="#">
+				<i class="fa fa-home"></i>
+			</a>
+		</div>	
+	
 		{% for item in entries %}
-			
+			<div class="nav-entry" {% if item.subNavigation %}data-nav-id="{{item.ID}}" {% endif %}>
+				<!-- main navigation entry -->
+				<a href="{{constant('BASEURL')}}{{item.target}}">
+					{% if item.icon %} <i class="fa {{item.icon}}"></i> {% endif %}
+					{{item.label}} 
+				</a>
+				<!-- sub navigation -->
+				{% if item.subNavigation %}
+					<div style="display: none;" class="subnav" data-nav-content="{{item.ID}}">
+						{% for sub in item.subNavigation %}
+							<a class="col-xs-6 col-md-3" href="{{constant('BASEURL')}}{{sub.target}}">
+								<i class="fa fa-power-off"></i>
+								<span>{{sub.label}}</span>
+							</a>
+						{% endfor %}
+					</div>
+				{% endif %}
+			</div>
 		{% endfor %}
 	</div>
 </nav>

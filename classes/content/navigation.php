@@ -71,7 +71,7 @@ class NavigationEntry extends DBObject {
                         if (!$this->subNavigation) {
                             $this->subNavigation = array();
                         }
-                        array_push($this->subNavigation, new NavigationEntry($data2["id"]));
+                        array_push($this->subNavigation, new NavigationEntry($data2["id"], $isPublic));
                     }
                 }
             }
@@ -122,7 +122,7 @@ class Navigation {
         $query = "select id from navigationentry where " . ($this->isPublic() ? "active = 1 and " : "") . "parent is null order by position asc";
         if ($datasrc = mysql_query($query)) {
             while ($data = mysql_fetch_array($datasrc)) {
-                $entry = new NavigationEntry($data["id"]);
+                $entry = new NavigationEntry($data["id"], $this->publicFlag);
                 array_push($entries, $entry);
             }
         }

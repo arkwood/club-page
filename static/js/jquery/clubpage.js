@@ -4,7 +4,7 @@ $(document).ready(function() {
 	/*
 	 * Navigation and Header
 	 */
-	$('#main-nav-collapse li').mouseover(function(e) {
+	$('#main-nav-collapse .nav-entry').mouseover(function(e) {
 		$('.subnav[data-nav-content]').hide();
 		var navElement = $(e.target).closest('[data-nav-id]');
 		if (navElement.length > 0) {
@@ -13,8 +13,7 @@ $(document).ready(function() {
 		}
 	});
 	
-	$('#main-nav-collapse li').mouseout(function(e) {
-		console.log('hide');
+	$('#main-nav-collapse .nav-entry').mouseout(function(e) {
 		$('.subnav[data-nav-content]').hide();
 	});
 });

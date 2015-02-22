@@ -22,8 +22,8 @@ $title = 'Club Page';
 				    <div class="col-xs-2 center">
 				        <i class="fa fa-soccer-ball-o fa-4x"></i>    
 				    </div>
-				    <div class="col-xs-5 font-white">
-				        <b>Club Page</b> - Content-Management-System<br/>and Club-Management    
+				    <div class="col-xs-5">
+				        <b>ClubSport</b> - Content-Management-System<br/>and Club-Management    
 				    </div>
 				</div>
 				<div id="navigation">

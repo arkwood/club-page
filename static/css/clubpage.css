@@ -1,18 +1,28 @@
 body {
-    background-color: #999;
+    background-color: #fff;
 }
 
+/*
+ * Header Section
+ */
 #banner {
     color: #f00;
     padding: 20px;
     font-size: 18px;
 }
 
+/*
+ * Navigation Section
+ */
 #navigation .navbar {
     margin-top: 5px;
-    background-color: #fff;
+    background-color: #666;
     border: 0px;
     border-radius: 0px;
+}
+#navigation #main-nav-collapse {
+    padding: 0px;
+    height: 50px;
 }
 #navigation #main-nav-collapse .subnav {
     width: 100%;
@@ -22,3 +32,34 @@ body {
     background-color: #666;
     color: #fff;
 }
+#navigation #main-nav-collapse .nav-entry {
+    height: 50px;
+    margin: 0px;
+    padding: 15px 0px;
+    float: left;
+}
+#navigation #main-nav-collapse .nav-entry:hover {
+    background-color: #888;
+}
+#navigation #main-nav-collapse .nav-entry a {
+    color: #fff;
+    padding: 15px;
+}
+#navigation #main-nav-collapse .nav-entry.home-icon {
+    padding-top: 5px;
+}
+#navigation #main-nav-collapse .nav-entry.home-icon a {
+    padding: 5px 15px;
+    font-size: 30px;
+}
+#navigation #main-nav-collapse .nav-entry .subnav {
+    z-index: 10;
+    background-color: #ccc;
+}
+#navigation #main-nav-collapse .nav-entry .subnav a span {
+    text-decoration: underline;
+}
+#navigation a:hover {
+    text-decoration: none;
+}
+

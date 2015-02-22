@@ -15,11 +15,15 @@ if ($demo !== true)
 mysql_connect(MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD);
 mysql_select_db(MYSQL_DATABASE);
 
+
 foreach (scandir('datamodel') as $entry) {
     // skip current directory and parent directory
     if ($entry === "." || $entry === "..")
                 continue;
-    
-    require_once 'datamodel/' . $entry; 
+    echo '  <h3 style="border-bottom: 1px solid #900; color: #900;">datamodel/' . $entry . '</h3>
+            <p style="font-family: Courier;">';    
+    require_once 'datamodel/' . $entry;
+    echo '  </p>'; 
 }
+
 ?>

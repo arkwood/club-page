@@ -10,3 +10,12 @@
 .font-white {
     color: #fff;
 }
+.no-padding {
+    padding: 0px;
+}
+.float-left {
+    float: left;
+}
+.float-right {
+    float: right;
+}

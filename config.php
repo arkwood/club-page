@@ -10,6 +10,9 @@ define('BASE_PATH', dirname(__FILE__) . '/');
 /** website domain */
 define('BASEURL', 'http://localhost/verein/');
 
+/** website folder compared to the domain root */
+define('ROOT_FOLDER', '/verein/');
+
 /** MySQL host name */
 define('MYSQL_HOST', 'localhost');
 /** MySQL user name */
@@ -28,7 +31,7 @@ define('STATIC_IGNORE', 'admin');
 
 
 /** default script include */
-define('DEFAULT_CONTENT', 'views/news/news.php');
+define('DEFAULT_CONTENT', 'views/content/page.php');
 
 /** the URL parameter used to specify the output format (e.g. JSON) */
 define('CONTENT_TYPE_PARAM', 'format');

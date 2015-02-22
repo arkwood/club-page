@@ -1,8 +1,11 @@
 <?php
 require_once 'loader.php';
 
-$html = 'This is the news';
+// load content
+$html = "";
+require 'views/content/page.php';
 
+// render content
 addScriptContent($html);
 require_once 'index.php';
 ?>
