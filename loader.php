@@ -78,10 +78,10 @@ includeClass(CLASSFOLDER);
 /**
  * load Javascript and CSS
  */
-function includeStatic($fs) {
+function includeStatic($fs, $admin) {
 	$result = '';
 	$subElement = array();
-	
+
 	// object is a directory, add it to the list
 	if (is_dir($fs)) {
 
@@ -91,7 +91,13 @@ function includeStatic($fs) {
 				continue;
 			
 			// exclude ignore list
-			$ignoreList = STATIC_IGNORE;
+			$ignoreList = "";
+            if ($admin) {
+                $ignoreList = STATIC_IGNORE_BACKEND;
+            }
+            else {
+                $ignoreList = STATIC_IGNORE;    
+            }
 			$ignoreList = explode(",", $ignoreList);
 			$ignoreCurrentEntry = false;
 			foreach ($ignoreList as $ignore) {
@@ -117,13 +123,20 @@ function includeStatic($fs) {
 	
 	// finally include sub dirs
 	foreach ($subElement as $element) {		
-			$result .= includeStatic($element);
+			$result .= includeStatic($element, $admin);
 	}		
 	
 	return $result;
 }
-$GLOBAL[GLOBALSTATICCONTENT] = includeStatic(STATICFOLDER);
- 
+
+if (strpos($_SERVER["PHP_SELF"], '/admin/') === false) {
+    $GLOBAL[GLOBALSTATICCONTENT] = includeStatic(STATICFOLDER, false);
+} 
+else {
+    $GLOBAL[GLOBALSTATICCONTENT] = includeStatic('../' . STATICFOLDER, true);
+}
+
+
 
 /**
  * locale and internationalization

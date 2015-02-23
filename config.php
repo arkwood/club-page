@@ -8,10 +8,10 @@ ini_set('display_errors', 1);
 define('BASE_PATH', dirname(__FILE__) . '/');
 
 /** website domain */
-define('BASEURL', 'http://localhost/verein/');
+define('BASEURL', 'http://localhost/');
 
 /** website folder compared to the domain root */
-define('ROOT_FOLDER', '/verein/');
+define('ROOT_FOLDER', '/');
 
 /** MySQL host name */
 define('MYSQL_HOST', 'localhost');
@@ -28,10 +28,14 @@ define('CLASSFOLDER', 'classes');
 define('STATICFOLDER', 'static');
 /** don't load the following static includes */
 define('STATIC_IGNORE', 'admin');
+/** don't load the following static includes in the backend */
+define('STATIC_IGNORE_BACKEND', 'clubpage.js,clubpage.css');
 
 
-/** default script include */
+/** default script include for the frontend */
 define('DEFAULT_CONTENT', 'views/content/page.php');
+/** default script include for the backend */
+define('DEFAULT_CONTENT_BACKEND', 'backend.php');
 
 /** the URL parameter used to specify the output format (e.g. JSON) */
 define('CONTENT_TYPE_PARAM', 'format');

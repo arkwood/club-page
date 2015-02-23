@@ -1,12 +1,7 @@
 <?php
 if ($drop) {
     $tables = array('page', 'section', 'sectionparameter');
-    foreach ($tables as $table) {
-        $sql = "DROP TABLE `" . $table . "`"; 
-        echo $sql .'<br/>';
-        mysql_query($sql);
-        echo mysql_error() . '<br/>';
-    }
+    dropTables($tables);
 }
 
 $tableCreation = array(
@@ -39,12 +34,7 @@ $tableCreation = array(
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8;"
     );
 
-foreach ($tableCreation as $sql) {
-    echo $sql . '<br/>';
-    mysql_query($sql);
-    echo mysql_error() . '<br/>';
-}
-  
+executeSQL($tableCreation);  
 
 if ($demo) {
     // navigation
@@ -58,20 +48,21 @@ if ($demo) {
             values (3, 1, 'Herren', 1, 0);",
         // sections for root pages
         "insert into section (id, pageid, width, sectiontype, position) 
-            values (1, 1, 12, 'views/content/wysiwyg', 1)",
+            values (1, 1, 6, 'views/content/wysiwyg', 1)",
             // section parameter
             "insert into sectionparameter (id, sectionid, name, textvalue) 
                 values (1, 1, 'wysiwyg', 'This is the content of the home page')",
         "insert into section (id, pageid, width, sectiontype, position) 
-            values (2, 2, 12, 'views/news/newslist', 1)",
+            values (2, 1, 6, 'views/content/wysiwyg', 1)",
+            // section parameter
+            "insert into sectionparameter (id, sectionid, name, textvalue) 
+                values (2, 2, 'wysiwyg', 'This is the second section')",
+        "insert into section (id, pageid, width, sectiontype, position) 
+            values (3, 2, 12, 'views/news/newslist', 1)",
             // section parameter
             "insert into sectionparameter (id, sectionid, name, value)
-                values (2, 2, 'category', 1)"
+                values (3, 3, 'category', 1)"
     );
-    foreach ($data as $query) {
-        echo $query . '<br/>';
-        mysql_query($query);
-        echo mysql_error() . '<br/>';
-    }
+    executeSQL($data);
 }
 ?>

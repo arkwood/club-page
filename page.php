@@ -2,8 +2,7 @@
 require_once 'loader.php';
 
 // load content
-$html = "";
-require 'views/content/page.php';
+$html = includeView('views/content/page.php', $twig, $html, false);
 
 // render content
 addScriptContent($html);

@@ -4,6 +4,26 @@ ini_set('display_errors', 1);
 
 require_once '../config.php';
 
+function dropTables($tables) {
+    $result = array();
+    foreach ($tables as $table) {
+        $sql = "DROP TABLE IF EXISTS`" . $table . "`";
+        array_push($result, $sql);
+    }
+    executeSQL($result);
+}
+
+function executeSQL($sql) {
+    foreach ($sql as $query) {
+        mysql_query($query);
+        echo '<li>' . $query . '</li>';
+        $error = mysql_error();
+        if ($error) {
+            echo '<ul><li style="color: #f00;">' . $error . '</li></ul>';
+        }
+    }
+}
+
 $drop = ($drop === true);
 if ($drop !== true) 
     $drop = ($_GET["drop"] == 'true');

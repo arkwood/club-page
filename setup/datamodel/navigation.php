@@ -1,26 +1,24 @@
 <?php
-$sql = "CREATE TABLE IF NOT EXISTS `navigationentry` (
-          `id` int(11) NOT NULL AUTO_INCREMENT,
-          `label` varchar(64),
-          `icon` varchar(32),
-          `target` varchar(255) NOT NULL,
-          `active` tinyint NOT NULL,
-          `position` int NOT NULL,
-          `parent` int,
-          `defaultnav` tinyint NOT NULL,
-          `pageid` int,
-          `external` tinyint NOT NULL,
-          PRIMARY KEY (`id`)
-        ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;";
-
 if ($drop) {
-    mysql_query("DROP TABLE `navigationentry`");
-    echo ("DROP TABLE `navigationentry`");
-    echo mysql_error() . '<br/>';    
-}       
-mysql_query($sql);
-echo $sql . '<br/>';
-echo mysql_error() . '<br/>';
+    $tables = array('navigationentry');
+    dropTables($tables);
+}
+
+$tableCreation = array("CREATE TABLE IF NOT EXISTS `navigationentry` (
+      `id` int(11) NOT NULL AUTO_INCREMENT,
+      `label` varchar(64),
+      `icon` varchar(32),
+      `target` varchar(255) NOT NULL,
+      `active` tinyint NOT NULL,
+      `position` int NOT NULL,
+      `parent` int,
+      `defaultnav` tinyint NOT NULL,
+      `pageid` int,
+      `external` tinyint NOT NULL,
+      PRIMARY KEY (`id`)
+    ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;");
+    
+executeSQL($tableCreation);
 
 if ($demo) {
     $data = array(
@@ -39,10 +37,6 @@ if ($demo) {
         "insert into navigationentry (id, label, icon, target, active, position, parent, defaultnav, pageid, external)
             values (6, 'Damen', null, 'mannschaft/damen', 1, 2, 2, 0, 1, 0);",
     );
-    foreach ($data as $query) {
-        mysql_query($query);
-        echo mysql_error() . '<br/>';
-        echo $query . '<br/>';
-    }
+    executeSQL($data);
 }
 ?>

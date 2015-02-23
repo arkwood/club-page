@@ -5,4 +5,10 @@ function addScriptContent($html) {
 	else 
 		$GLOBALS[GLOBALSCRIPTCONTENT] = $html;	
 }
+
+function includeView($viewName, $twig, $html, $section) {
+    $localDir = dirname(__FILE__);
+    require $localDir . '/' . $viewName;
+    return $html;
+}
 ?>
