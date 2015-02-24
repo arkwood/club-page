@@ -21,7 +21,7 @@ foreach ($sections as $section) {
     $layoutClass = ($section->view == 'views/content/page') ? "no-padding" : "";
    
     $html .= '<div class="col-xs-12 col-md-' . $section->width . ' ' . $layoutClass . '">';
-    $html .= includeView($section->view . '.php', $twig, $html, $section);
+    $html .= includeView($section->view . '.php', $twig, $section);
     $html .= '</div>';
 }
 

@@ -1,11 +1,18 @@
 <div class="container">
-	<div class="form-group">
-		<label>Login</label>
-		<input type="text" class="form-control" placeholder="Login"/>
-		
-		<label>Passwort</label>
-		<input type="password" class="form-control" placeholder="Passwort"/>
-		
-		<button class="btn btn-primary">Login</button>
-	</div>
+	{% if not result %}
+		<b>Login failed!</b>
+	{% elseif result == 0 %}
+		<b>Login not activated!</b>
+	{% endif %}
+	<form action="{{BASEURL}}/admin/backend.php" method="post">
+		<div class="form-group">
+			<label>Login</label>
+			<input type="text" name="username" class="form-control" placeholder="Login"/>
+			
+			<label>Passwort</label>
+			<input type="password" name="password" class="form-control" placeholder="Passwort"/>
+			
+			<button id="login-button" name="login" class="btn btn-primary">Login</button>
+		</div>
+	</form>
 </div>

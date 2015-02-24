@@ -17,6 +17,7 @@ Twig_Extensions_Autoloader::register();
 $twigLoader = new Twig_Loader_Filesystem(BASE_PATH . 'templates');
 // declare twig environment
 $twig = new Twig_Environment($twigLoader);
+$twig->addGlobal('BASEURL', BASEURL);
 /*, array(
     'cache' => BASE_PATH . 'tpl_compile/cache',
 )); */
@@ -72,7 +73,7 @@ function includeClass($fs) {
 		includeClass($dir);
 }
 require_once CLASSFOLDER . '/dbobject.php';
-includeClass(CLASSFOLDER);
+includeClass(dirname(__FILE__) . '/' . CLASSFOLDER);
 
 
 /**
@@ -114,10 +115,10 @@ function includeStatic($fs, $admin) {
 			else {
 				// file is a match - load it by prepending it to the result
 				if (strpos($entry, ".css") == strlen($entry) - 4)
-					$result .= '<link href="' . BASEURL . str_ireplace('../', '', $entry) . '" rel="stylesheet" type="text/css" />';
+					$result .= '<link href="' . BASEURL . str_ireplace(dirname(__FILE__), '', $entry) . '" rel="stylesheet" type="text/css" />';
 				else if (strpos($entry, ".js") == strlen($entry) - 3)
-					$result .= '<script type="text/javascript" src="' . BASEURL . str_ireplace('../', '', $entry) . '"></script>';
-			}			
+					$result .= '<script type="text/javascript" src="' . BASEURL . str_ireplace(dirname(__FILE__), '', $entry) . '"></script>';
+			}
 		}
 	}
 	
@@ -129,13 +130,7 @@ function includeStatic($fs, $admin) {
 	return $result;
 }
 
-if (strpos($_SERVER["PHP_SELF"], '/admin/') === false) {
-    $GLOBAL[GLOBALSTATICCONTENT] = includeStatic(STATICFOLDER, false);
-} 
-else {
-    $GLOBAL[GLOBALSTATICCONTENT] = includeStatic('../' . STATICFOLDER, true);
-}
-
+$GLOBAL[GLOBALSTATICCONTENT] = includeStatic(dirname(__FILE__) . '/' . STATICFOLDER, false);
 
 
 /**
@@ -158,6 +153,9 @@ if (strpos(AVAILABLE_LOCALES, $providedLocale) === false) {
 setlocale(LC_TIME, $providedLocale);
 $_SESSION["lang"] = $providedLocale;
 define('CURRENT_LOCALE', $providedLocale);
+
+
+date_default_timezone_set(DEFAULT_TIME_ZONE);
 
 
 ?>

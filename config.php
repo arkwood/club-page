@@ -8,7 +8,7 @@ ini_set('display_errors', 1);
 define('BASE_PATH', dirname(__FILE__) . '/');
 
 /** website domain */
-define('BASEURL', 'http://localhost/');
+define('BASEURL', 'http://localhost');
 
 /** website folder compared to the domain root */
 define('ROOT_FOLDER', '/');
@@ -21,6 +21,11 @@ define('MYSQL_USER', 'root');
 define('MYSQL_PASSWORD', '');
 /** MySQL database */
 define('MYSQL_DATABASE', 'clubpage');
+
+/** MySQL datetime format */
+define('MYSQL_DATE_TIME_FORMAT', 'Y-m-d H:i:s');
+/** MySQL date format */
+define('MYSQL_DATE_FORMAT', 'Y-m-d');
 
 /** main folder for PHP class files */
 define('CLASSFOLDER', 'classes');
@@ -39,4 +44,7 @@ define('DEFAULT_CONTENT_BACKEND', 'backend.php');
 
 /** the URL parameter used to specify the output format (e.g. JSON) */
 define('CONTENT_TYPE_PARAM', 'format');
+
+
+define('DEFAULT_TIME_ZONE', 'Australia/Melbourne');
 ?>

@@ -14,6 +14,7 @@ $tableCreation = array(
           `password` varchar(255) NOT NULL,
           `active` tinyint NOT NULL,
           `lastlogin` datetime,
+          `authtoken` varchar(255),
           PRIMARY KEY (`id`)
         ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;",
         // create table section
@@ -32,8 +33,8 @@ if ($demo) {
     // navigation
     $data = array(
         // admin user
-        "insert into user (id, name, email, login, password, active, lastlogin) 
-            values (1, 'Administrator', 'admin@isworks.de', 'admin', md5('admin'), 1, now());",
+        "insert into user (id, name, email, login, password, active) 
+            values (1, 'Administrator', 'admin@isworks.de', 'admin', md5('admin'), 1);",
         // permissions
         "insert into permission (id, userid, name, value) 
             values (1, 1, 'news', 2)",
