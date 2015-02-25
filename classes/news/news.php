@@ -1,7 +1,7 @@
 <?php
 
-require_once 'newscategory.php';
-require_once '../user/user.php';
+require_once dirname(__FILE__) . '/newscategory.php';
+require_once dirname(__FILE__) . '/../user/user.php';
 
 class News extends DBObject {
 	

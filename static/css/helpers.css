@@ -19,3 +19,15 @@
 .float-right {
     float: right;
 }
+.tab-1 {
+	padding-left: 2em;
+}
+.tab-2 {
+	padding-left: 4em;
+}
+.tab-3 {
+	padding-left: 6em;
+}
+.absolute {
+	position: absolute;
+}

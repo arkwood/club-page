@@ -12,6 +12,7 @@ $tableCreation = array(
           `rootpage` tinyint NOT NULL,
           `defaultpage` tinyint NOT NULL,
           `active` tinyint NOT NULL,
+		  `parentpageid` int(11),
           PRIMARY KEY (`id`)
         ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;",
         // create table section

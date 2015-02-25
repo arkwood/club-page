@@ -1,0 +1,80 @@
+<div class="list-option">
+	<a href="{{BASEURL}}/admin/backend.php?view=pages/newpage">
+		<i class="fa fa-plus"></i> Create New Page
+	</a>
+</div>
+
+<div class="col-xs-12 col-md-5 list-header">Name</div>
+<div class="col-xs-12 col-md-3 list-header">Flags</div>
+<div class="col-xs-12 col-md-4 list-header">Navigation</div>
+
+<div class="list-container row tree">
+	<!--  root level pages -->
+	{% for page in pages %}
+		<div class="list-entry row">
+			<div class="col-xs-12 col-md-5 tab-1">
+				{% if page.subPages %}
+					<i class="fa fa-minus absolute" data-page="{{page.ID}}"></i>
+				{% endif %}
+				<a href="{{BASEURL}}/admin/backend.php?view=pages/page&pageid={{page.ID}}">{{page.name}}</a>
+			</div>
+			<div class="hidden-xs col-md-3">
+				{% if page.active %}
+					ACTIVE
+				{% endif %}
+				{% if page.default %}
+					DEFAULT
+				{% endif %}
+			</div>
+			<div class="hidden-xs col-md-4">/// show navigation entry</div>
+		</div>
+		
+		<!--  second level pages -->
+		{% if page.subPages %}
+			{% for subPage in page.subPages %}
+				<div class="list-entry row" data-sub-page="{{page.ID}}">
+					<div class="col-xs-12 col-md-5 tab-2">
+						{% if subPage.subPages %}
+							<i class="fa fa-minus absolute" data-page="{{subPage.ID}}"></i>
+						{% endif %}
+						<a href="{{BASEURL}}/admin/backend.php?view=pages/page&pageid={{subPage.ID}}">{{subPage.name}}</a>
+					</div>
+					<div class="hidden-xs col-md-3">
+						{% if subPage.active %}
+							ACTIVE
+						{% endif %}
+						{% if subPage.default %}
+							DEFAULT
+						{% endif %}
+					</div>
+					<div class="hidden-xs col-md-4">/// show navigation entry</div>
+				</div>
+				
+				<!--  third level pages -->
+				{% if subPage.subPages %}
+					{% for subSubPage in subPage.subPages %}
+						<div class="list-entry row" data-sub-page="{{subPage.ID}}">
+							<div class="col-xs-12 col-md-5 tab-3">
+								{% if subSubPage.subPages %}
+									<i class="fa fa-minus absolute" data-page="{{subSubPage.ID}}"></i>
+								{% endif %}
+								<a href="{{BASEURL}}/admin/backend.php?view=pages/page&pageid={{subSubPage.ID}}">{{subSubPage.name}}</a>
+							</div>
+							<div class="hidden-xs col-md-3">
+								{% if subSubPage.active %}
+									ACTIVE
+								{% endif %}
+								{% if subSubPage.default %}
+									DEFAULT
+								{% endif %}
+							</div>
+							<div class="hidden-xs col-md-4">/// show navigation entry</div>
+						</div>
+					{% endfor %}
+				{% endif %}
+				<!--  end of third level -->
+			{% endfor %}
+		{% endif %}
+		<!--  end of second level -->
+	{% endfor %}
+</div>

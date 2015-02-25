@@ -4,7 +4,7 @@ class CMSRegistry {
     public static $register = array();
     
     static function register($sectionType) {
-        array_push(CMSRegistry::register, $sectionType);
+        array_push(CMSRegistry::$register, $sectionType);
     }
 }
 
@@ -15,7 +15,6 @@ class SectionType {
     public $label;
     
     function __construct() {
-        
     }
 }
 
@@ -40,4 +39,5 @@ class CMSEditor {
         
     }
 }
+
 ?>

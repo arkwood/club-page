@@ -5,7 +5,11 @@ $page = false;
 $pageId = 0;
 
 // determine page to show
-if ($_GET["pageid"]) {
+if ($section instanceof SectionSubPage) {
+	$pageId = $section->getParameter(SectionSubPage::PARAMETER_PAGEID);
+	$page = new Page($pageId);
+}
+else if ($_GET["pageid"]) {
     $pageId = $_GET["pageid"];
     $page = new Page($pageId);
 }

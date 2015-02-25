@@ -2,8 +2,6 @@
 require_once 'config.php';
 require_once 'function.php';
 
-define('BASE_PATH', dirname(__FILE__) . '/');
-
 /*
  * initialize template engine
  */
@@ -23,7 +21,6 @@ $twig->addGlobal('BASEURL', BASEURL);
 )); */
 // add extension for i18n
 $twig->addExtension(new Twig_Extensions_Extension_I18n());
-
 
 /**
  * initialize session and set header

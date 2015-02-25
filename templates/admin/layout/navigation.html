@@ -1,15 +1,16 @@
 <div class="nav">
 	<div class="col-xs-12">
-		<a href="{{BASEURL}}/admin/backend.php?profile=true">
+		Hi {{CurrentUser.name}}<br/>
+		<a href="{{BASEURL}}/admin/backend.php?view=user/profile">
 			<i class="fa fa-user"></i>
 		</a>
 		<a href="{{BASEURL}}/admin/backend.php?logout=true">
 			<i class="fa fa-power-off"></i>
 		</a>
 	</div>
-	<div class="col-xs-12"><a href="{{BASEURL}}/admin/backend.php?view=pages/pagelist">Pages</a></div>
-	<div class="col-xs-12">Navigation</div>
-	<div class="col-xs-12">News</div>
-	<div class="col-xs-12">Teams</div>
-	<div class="col-xs-12">Leagues</div>
+	<div class="col-xs-12 nav-entry"><a href="{{BASEURL}}/admin/backend.php?view=pages/pagelist">Pages</a></div>
+	<div class="col-xs-12 nav-entry">Navigation</div>
+	<div class="col-xs-12 nav-entry">News</div>
+	<div class="col-xs-12 nav-entry">Teams</div>
+	<div class="col-xs-12 nav-entry">Leagues</div>
 </div>

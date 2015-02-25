@@ -5,6 +5,9 @@ class SectionTypeNewsList extends SectionType {
 	
 	function __construct() {
 		array_push($this->parameters, new SectionTypeParameter('Category', 'category', new CMSSingleSelect($this->getNewsCategories())));
+		$this->identifier = "newslist";
+		$this->label = "News List";
+		$this->view = 'news/newslist';
 	}
 	
 	

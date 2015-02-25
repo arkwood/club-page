@@ -1,7 +1,6 @@
 <?php
 require_once '../loader.php';
 
-
 $result = true;
 
 if (array_key_exists("login", $_POST)) {
@@ -22,6 +21,7 @@ if (!User::isLoggedIn()) {
     addScriptContent($html);
 }
 else {
+	$twig->addGlobal("CurrentUser", User::getCurrentUser());
     // user is logged in -> render dashboard
     require 'views/layout/dashboard.php';
 }

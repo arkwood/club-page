@@ -1,0 +1,77 @@
+@CHARSET "UTF-8";
+button.btn-primary {
+	background-color: #ff9e2a;
+}
+button.btn-primary:hover {
+	background-color: #fca73e;
+	box-shadow: 2px 2px 2px #ccc;
+}
+#admin {
+	margin-top: 10px;
+}
+#admin .main-area h1 {
+	border-bottom: 1px solid #ff9e2a;
+	color: #ff9e2a;
+	font-size: 18px;
+	font-weight: bold;
+	padding-bottom: 5px;
+}
+
+/* backend navigation */
+#admin .nav div.nav-entry {
+	background-color: #eee;
+	border: 1px solid #ddd;
+	padding: 10px;
+}
+#admin .nav div.nav-entry:hover {
+	background-color: #666;
+	cursor: pointer;
+}
+#admin .nav div.nav-entry:hover a {
+	color: #fff;
+}
+
+/* list styles */
+#admin .list-option {
+	margin-bottom: 10px;
+}
+#admin .list-option a {
+	text-decoration: none;
+}
+#admin .list-option a:hover {
+	text-decoration: none;
+}
+#admin .list-header {
+	background-color: #666;
+	color: #fff;
+	padding: 5px;
+	padding-left: 20px;
+}
+#admin .list-container {
+	border-bottom: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	margin: 0px;
+}
+#admin .list-entry {
+	margin: 0px;
+	color: #f00;
+	padding: 5px;
+}
+#admin .list-entry:nth-child(even) {
+	background-color: #fefefe;
+}
+#admin .list-entry:nth-child(odd) {
+	background-color: #f3f3f3;
+}
+#admin .list-container .list-entry:hover {
+	background-color: #FFDFBA;
+}
+
+#admin .tree i.fa-plus,
+#admin .tree i.fa-minus {
+	margin-left: -15px;
+	margin-top: 3px;
+	cursor: pointer;
+}
+

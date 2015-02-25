@@ -11,8 +11,7 @@ if (User::checkPermission('cms', 1)) {
 		}
 	}
 	
-	
-	$html = $twig->render('admin/cms/pagelist.html', array("pages" => $pages));
+	$html = $twig->render('admin/cms/newpage.html', array("rootPages" => $pages));
     addScriptContent($html);    
 }
 else {
