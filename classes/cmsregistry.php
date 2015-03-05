@@ -6,6 +6,16 @@ class CMSRegistry {
     static function register($sectionType) {
         array_push(CMSRegistry::$register, $sectionType);
     }
+    
+    static function getType($typeId) {
+    	foreach (CMSRegistry::$register as $type) {
+    		if ($type->view == $typeId) {
+    			return $type;
+    		}
+    	}
+    	
+    	return false;
+    }
 }
 
 class SectionType {
@@ -13,6 +23,7 @@ class SectionType {
     public $view;
     public $identifier;
     public $label;
+    public $color = "#ccc";
     
     function __construct() {
     }

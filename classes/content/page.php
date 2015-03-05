@@ -43,6 +43,18 @@ class Page extends DBObject {
         return false;
     }
     
+    static function getRootPages() {
+    	$pages = array();
+    	
+    	$query = "select id from page where rootpage = 1 order by name asc";
+    	if ($result = mysql_query($query)) {
+    		while ($data = mysql_fetch_array($result)) {
+    			array_push($pages, new Page($data["id"]));
+    		}
+    	}
+    	return $pages;
+    }
+    
     function getSections() {
         $list = array();
         
@@ -73,6 +85,16 @@ class Page extends DBObject {
     	}
     	else {
     		return new Page($this->parentPageId);
+    	}
+    }
+    
+    
+    function fixPosition() {
+    	$this->sections = $this->getSections();
+    	$position = 1;
+    	foreach ($this->sections as $section) {
+    		$section->updatePosition($position);
+    		$position++;
     	}
     }
 }

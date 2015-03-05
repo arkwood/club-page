@@ -3,6 +3,13 @@ require_once 'config.php';
 require_once 'function.php';
 
 /*
+ * Find out if this is an admin request
+ */
+// TODO: sub-directories not handled. Remove http, host and port from BASE_URL to find string position of /admin
+$admin = strpos($_SERVER["PHP_SELF"], 'admin') == 1;
+
+
+/*
  * initialize template engine
  */
  // load Twig core
@@ -22,28 +29,30 @@ $twig->addGlobal('BASEURL', BASEURL);
 // add extension for i18n
 $twig->addExtension(new Twig_Extensions_Extension_I18n());
 
-/**
+/*
  * initialize session and set header
  */
 session_start();
-if ($_GET[CONTENT_TYPE_PARAM] == 'json') {
-    header('Content-Type: text/json; charset=utf-8');
-}
-else if ($_GET[CONTENT_TYPE_PARAM] == 'xml') {
-    header('Content-Type: text/xml; charset=utf-8');
-}
-else {
-    header('Content-Type: text/html; charset=utf-8');
+if (!$GLOBALS["headerAlreadySent"]) {
+	if ($_GET[CONTENT_TYPE_PARAM] == 'json') {
+	    header('Content-Type: text/json; charset=utf-8');
+	}
+	else if ($_GET[CONTENT_TYPE_PARAM] == 'xml') {
+	    header('Content-Type: text/xml; charset=utf-8');
+	}
+	else {
+	    header('Content-Type: text/html; charset=utf-8');
+	}
 }
 
 
-/** 
+/*
  * connect to the database
  */
 mysql_connect(MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD);
 mysql_select_db(MYSQL_DATABASE);
 
-/**
+/*
  * load classes
  */ 
 function includeClass($fs) {
@@ -79,6 +88,7 @@ includeClass(dirname(__FILE__) . '/' . CLASSFOLDER);
 function includeStatic($fs, $admin) {
 	$result = '';
 	$subElement = array();
+
 
 	// object is a directory, add it to the list
 	if (is_dir($fs)) {
@@ -127,10 +137,10 @@ function includeStatic($fs, $admin) {
 	return $result;
 }
 
-$GLOBAL[GLOBALSTATICCONTENT] = includeStatic(dirname(__FILE__) . '/' . STATICFOLDER, false);
+$GLOBAL[GLOBALSTATICCONTENT] = includeStatic(dirname(__FILE__) . '/' . STATICFOLDER, $admin);
 
 
-/**
+/*
  * locale and internationalization
  */
 // fall back to locale

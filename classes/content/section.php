@@ -2,24 +2,34 @@
 class Section extends DBObject {
     
     public $view;
+    public $pageId;
     public $parameters;
     public $width;
     public $position;
+    public $sectionType;
+    public $sectionColor;
     
     
     function __construct($id) {
         $this->ID = $id;
         
-        $query = "select width, position, sectiontype from section where id = " . $id;
+        $query = "select width, position, sectiontype, pageid from section where id = " . $id;
         if ($result = mysql_query($query)) {
             while ($data = mysql_fetch_array($result)) {
                 $this->width = $data["width"];
                 $this->position = $data["position"];
                 $this->view = $data["sectiontype"];
-                
+                $this->pageId = $data["pageid"];
                 $this->parameters = $this->getParameters();
+                
+                // substr: views/content/wysiwyg -> content/wysiwyg
+                $this->sectionType = CMSRegistry::getType($this->view);
             }
         }
+    }
+    
+    function getPage() {
+    	return new Page($this->pageId);
     }
     
     function getParameters() {
@@ -49,6 +59,12 @@ class Section extends DBObject {
     function getParameterValue($name) {
         $parameter = $this->getParameter($name);
         return $parameter->value;
+    }
+    
+    
+    function updatePosition($newPosition) {
+    	mysql_query('update section set position = ' . $newPosition . ' where id = ' . $this->ID);
+    	$this->position = $newPosition;
     }
 }
 

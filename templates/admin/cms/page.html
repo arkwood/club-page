@@ -11,14 +11,59 @@
 		<div class="row">
 			<div class="form-group col-xs-12 col-md-6">
 				<label for="name">Name</label>
-				<input type="text" class="form-control" name="name" id="name"/> 
+				<input type="text" class="form-control" name="name" id="name" value="{{page.name}}"/> 
 			</div>
 			
 			<div class="form-group col-xs-12 col-md-6">
 				<label for="parent">Parent</label>
 				<select class="form-control" name="parent" id="parent">
+					<option value="">None</option>
+					{% for rpage in rootPages %}
+		  				<option value="{{rpage.ID}}" {% if rpage.ID == page.parentPageId %}selected{% endif %}>{{rpage.name}}</option>
+		  				{# 2nd level pages #}
+		  				{% if rpage.subPages %}
+		  					{% for subPage in page.subPages %}
+		  						<option value="{{subPage.ID}}" {% if subPage.ID == page.parentPageId %}selected{% endif %}>&raquo; {{subPage.name}}</option>
+		  						{# 3rd level pages #}
+		  						{% if subPage.subPages %}
+				  					{% for subSubPage in subPage.subPages %}
+				  						<option value="{{subSubPage.ID}}" {% if subSubPage.ID == page.parentPageId %}selected{% endif %}>&raquo; &raquo; {{subSubPage.name}}</option>
+				  					{% endfor %}
+				  				{% endif %}
+		  					{% endfor %}
+		  				{% endif %}
+		  			{% endfor %}
 				</select> 
 			</div>
+			
+			<div class="form-group col-xs-12 col-md-6">
+				<input type="checkbox" class="" name="active" id="active" {% if page.active %}checked="checked"{% endif %}"/>
+				<label for="active">Active</label>
+				<br/>
+				<input type="checkbox" class="" name="default" id="default" {% if page.default %}checked="checked"{% endif %}"/>
+				<label for="default">Home Page</label>
+			</div>
+			
+			<div class="col-xs-12" role="tabpanel"">
+				<ul class="nav nav-tabs" role="tablist">
+    				<li role="presentation">
+    					<a href="#cms-content" aria-controls="cms-content" role="tab" data-toggle="tab">Content</a>
+    				</li>
+    				<li role="presentation" class="active">
+    					<a href="#cms-layout" aria-controls="cms-layout" role="tab" data-toggle="tab">Layout</a>
+   					</li>
+				</ul>
+				
+				<div class="tab-content">
+					<div role="tabpanel" class="tab-pane" id="cms-content">
+						{% include 'admin/cms/contenteditor.html' %}
+					</div>
+    				<div role="tabpanel" class="tab-pane active" id="cms-layout">
+    					{% include 'admin/cms/layouteditor.html' %}
+    				</div>
+   				</div>
+			</div>
+			
 		</div>
 	</form>
 </div>

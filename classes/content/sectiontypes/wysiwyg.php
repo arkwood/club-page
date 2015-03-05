@@ -6,7 +6,8 @@ class SectionTypeWysiwyg extends SectionType {
         array_push($this->parameters, new SectionTypeParameter('Content', 'wysiwyg', new CMSTextEditor()));
         $this->identifier = "wysiwyg";
         $this->label = "WYSIWYG";
-        $this->view = 'content/wysiwyg';
+        $this->view = 'views/content/wysiwyg';
+        $this->color = '#fca27e';
     }
 }
 

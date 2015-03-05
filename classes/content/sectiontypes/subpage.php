@@ -8,7 +8,8 @@ class SectionSubPage extends SectionType {
 		array_push($this->parameters, new SectionTypeParameter('Sub Page', SectionSubPage::$PARAMETER_PAGEID, new CMSSingleSelect($this->getSubPages())));
 		$this->identifier = "subpage";
 		$this->label = "Sub Page";
-		$this->view = 'content/page';
+		$this->view = 'views/content/page';
+		$this->color = '#b0e2ff';
 	}
 	
 	

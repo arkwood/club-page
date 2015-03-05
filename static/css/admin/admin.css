@@ -75,3 +75,39 @@ button.btn-primary:hover {
 	cursor: pointer;
 }
 
+
+/* layout editor */
+#admin #cms-layout {
+	padding-top: 10px;
+	margin: -10px;
+	cursor: col-resize;
+}
+#admin #cms-layout .section-container {
+	padding: 10px;
+}
+#admin #cms-layout .section {
+	border: 1px solid #aaa;
+	padding: 15px;
+	height: 100px;
+	cursor: hand;
+}
+
+#cms-layout-context {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+#cms-layout-context ul.menu {
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+}
+#cms-layout-context ul.menu li {
+	background-color: #eee;
+	border: 1px solid #ccc;
+	padding: 5px 10px;
+}
+#cms-layout-context ul.menu li:hover {
+	background-color: #666;
+	color: #fff;
+	cursor: pointer;

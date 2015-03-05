@@ -44,7 +44,7 @@ define('DEFAULT_CONTENT', 'views/content/page.php');
 define('DEFAULT_CONTENT_BACKEND', 'backend.php');
 
 /** the URL parameter used to specify the output format (e.g. JSON) */
-define('CONTENT_TYPE_PARAM', 'format');
+define('CONTENT_TYPE_PARAM', 'responseformat');
 
 
 define('DEFAULT_TIME_ZONE', 'Australia/Melbourne');
