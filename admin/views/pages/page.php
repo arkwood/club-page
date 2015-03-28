@@ -5,7 +5,11 @@ if (User::checkPermission('cms', 1)) {
 	$page = new Page($_GET["pageid"]);
 	$pages = Page::getRootPages();
 	
-	$html = $twig->render('admin/cms/page.html', array("page" => $page, "rootPages" => $pages, "sectionTypes" => CMSRegistry::$register));
+	$html = $twig->render('admin/cms/page.html', array(
+			"page" => $page, 
+			"rootPages" => $pages, 
+			"sectionTypes" => CMSRegistry::$register	
+	));
     addScriptContent($html);    
 }
 else {

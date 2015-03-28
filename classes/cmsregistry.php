@@ -9,7 +9,7 @@ class CMSRegistry {
     
     static function getType($typeId) {
     	foreach (CMSRegistry::$register as $type) {
-    		if ($type->view == $typeId) {
+    		if ($type->identifier == $typeId) {
     			return $type;
     		}
     	}

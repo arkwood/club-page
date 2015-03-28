@@ -1,15 +1,45 @@
+<!--  visible sections -->
 {% for section in page.sections %}
 	<div class="section-container col-xs-12 col-md-{{section.width}}">
-		<div data-section="{{section.ID}}" data-width="{{section.width}}" class="section" style="background-color: {{ section.sectionType.color }};">
+		<div data-section="{{section.ID}}" data-type="{{section.sectionType.identifier}}" data-width="{{section.width}}" class="section" style="background-color: {{ section.sectionType.color }};">
 			<select class="form-control">
 				{% for type in sectionTypes %}
-					<option value="{{type.view}}" {% if section.view == type.view %}selected{% endif %}>{{type.label}}</option>
+					<option value="{{type.identifier}}" {% if section.sectionType.identifier == type.identifier %}selected{% endif %}>{{type.label}}</option>
 				{% endfor %}
 			</select>
 		</div>
 	</div>
 {% endfor %}
+<div class="col-xs-12 col-md-12" id="cms-layout-buttons">
+	<button class="btn btn-primary btn-lg" title="Add Section" id="add-section-button">
+		<i class="fa fa-plus"></i>
+	</button>
+	
+	<button class="btn btn-primary btn-lg" title="Save Layout" id="save-layout-button">
+		<i class="fa fa-save"></i>
+	</button>
+	<!-- 
+	<div id="cms-layout-plus-icon">
+		<i class="fa fa-plus"></i>
+	</div>
+	 -->
+</div>
 
+
+<!--  palette for all the section types -->
+<div id="cms-layout-type-palette" class="hide">
+{% for type in sectionTypes %}
+	<div data-type="{{type.identifier}}" data-view="{{type.view}}" data-color="{{type.color}}"></div>
+{% endfor %}
+</div>
+
+
+<!--  recycle bin for all the deleted sections -->
+<ul id="cms-layout-recycle-bin" class="hide">
+</ul>
+
+
+<!--  context menu for right click on element -->
 <div id="cms-layout-context" style="display: none;">
 	<ul class="menu">
 		<li id="remove-section">Remove Section</li>
@@ -17,6 +47,12 @@
 	</ul>
 </div>
 
+<!--  overlay for drag & drop -->
+<div id="cms-layout-overlay" style="display: none;">
+	Drag & Drop to Swap Sections
+</div>
+
+<!--  modal to remove a section -->
 <div id="cms-layout-remove-modal" class="modal fade">
 	<div class="modal-dialog">
     	<div class="modal-content">
@@ -25,7 +61,7 @@
 				<h4 class="modal-title">Remove Section</h4>
 			</div>
 			<div class="modal-body">
-				<p>Do you really want to delete the selected section? This will remove all the configuration parameters as well.</p>
+				<p>Do you really want to delete the selected section? This will remove all the configuration parameters (content) as well.</p>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
@@ -34,3 +70,31 @@
 		</div>
 	</div>
 </div>
+
+
+<!--  modal to split a section -->
+<div id="cms-layout-split-modal" class="modal fade">
+	<div class="modal-dialog">
+    	<div class="modal-content">
+      		<div class="modal-header">
+      			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">Split Section</h4>
+			</div>
+			<div class="modal-body">
+				<p>
+				Please specify the type of the new section:
+				</p>
+				<select name="newSplitType" id="new-split-type" class="form-control">
+					{% for type in sectionTypes %}
+						<option value="{{type.identifier}}">{{type.label}}</option>
+					{% endfor %}
+				</select>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+				<button type="button" class="btn btn-primary" id="cms-layout-split-section-button">Split Section</button>
+			</div>
+		</div>
+	</div>
+</div>
+

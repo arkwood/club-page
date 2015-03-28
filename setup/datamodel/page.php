@@ -21,6 +21,7 @@ $tableCreation = array(
             `pageid` int(11) NOT NULL,
             `width` tinyint NOT NULL,
             `sectiontype` varchar(255) NOT NULL,
+			`sectionview` varchar(255) NOT NULL,
             `position` int(11) NOT NULL,
             PRIMARY KEY (`id`)
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8;",
@@ -48,18 +49,18 @@ if ($demo) {
         "insert into page (id, active, name, rootpage, defaultpage) 
             values (3, 1, 'Herren', 1, 0);",
         // sections for root pages
-        "insert into section (id, pageid, width, sectiontype, position) 
-            values (1, 1, 6, 'views/content/wysiwyg', 1)",
+        "insert into section (id, pageid, width, sectiontype, sectionview, position) 
+            values (1, 1, 6, 'wysiwyg', 'views/content/wysiwyg', 0)",
             // section parameter
             "insert into sectionparameter (id, sectionid, name, textvalue) 
                 values (1, 1, 'wysiwyg', 'This is the content of the home page')",
-        "insert into section (id, pageid, width, sectiontype, position) 
-            values (2, 1, 6, 'views/content/wysiwyg', 1)",
+        "insert into section (id, pageid, width, sectiontype, sectionview, position) 
+            values (2, 1, 6, 'newslist', 'views/content/wysiwyg', 1)",
             // section parameter
             "insert into sectionparameter (id, sectionid, name, textvalue) 
                 values (2, 2, 'wysiwyg', 'This is the second section')",
-        "insert into section (id, pageid, width, sectiontype, position) 
-            values (3, 2, 12, 'views/news/newslist', 1)",
+        "insert into section (id, pageid, width, sectiontype, sectionview, position) 
+            values (3, 2, 12, 'newslist', 'views/news/newslist', 0)",
             // section parameter
             "insert into sectionparameter (id, sectionid, name, value)
                 values (3, 3, 'category', 1)"

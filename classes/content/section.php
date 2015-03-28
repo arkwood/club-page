@@ -13,17 +13,15 @@ class Section extends DBObject {
     function __construct($id) {
         $this->ID = $id;
         
-        $query = "select width, position, sectiontype, pageid from section where id = " . $id;
+        $query = "select width, position, sectionview, sectiontype, pageid from section where id = " . $id;
         if ($result = mysql_query($query)) {
             while ($data = mysql_fetch_array($result)) {
                 $this->width = $data["width"];
                 $this->position = $data["position"];
-                $this->view = $data["sectiontype"];
+                $this->view = $data["sectionview"];
+                $this->sectionType = CMSRegistry::getType($data["sectiontype"]);
                 $this->pageId = $data["pageid"];
                 $this->parameters = $this->getParameters();
-                
-                // substr: views/content/wysiwyg -> content/wysiwyg
-                $this->sectionType = CMSRegistry::getType($this->view);
             }
         }
     }

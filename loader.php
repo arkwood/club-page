@@ -122,9 +122,11 @@ function includeStatic($fs, $admin) {
 			else {
 				// file is a match - load it by prepending it to the result
 				if (strpos($entry, ".css") == strlen($entry) - 4)
-					$result .= '<link href="' . BASEURL . str_ireplace(dirname(__FILE__), '', $entry) . '" rel="stylesheet" type="text/css" />';
+					$result .= '<link href="' . BASEURL . str_ireplace(dirname(__FILE__), '', $entry) . '" rel="stylesheet" type="text/css" />
+	';
 				else if (strpos($entry, ".js") == strlen($entry) - 3)
-					$result .= '<script type="text/javascript" src="' . BASEURL . str_ireplace(dirname(__FILE__), '', $entry) . '"></script>';
+					$result .= '<script type="text/javascript" src="' . BASEURL . str_ireplace(dirname(__FILE__), '', $entry) . '"></script>
+	';
 			}
 		}
 	}

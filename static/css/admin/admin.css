@@ -18,16 +18,16 @@ button.btn-primary:hover {
 }
 
 /* backend navigation */
-#admin .nav div.nav-entry {
+#admin #navigation div.nav-entry {
 	background-color: #eee;
 	border: 1px solid #ddd;
 	padding: 10px;
 }
-#admin .nav div.nav-entry:hover {
+#admin #navigation div.nav-entry:hover {
 	background-color: #666;
 	cursor: pointer;
 }
-#admin .nav div.nav-entry:hover a {
+#admin #navigation div.nav-entry:hover a {
 	color: #fff;
 }
 
@@ -75,8 +75,7 @@ button.btn-primary:hover {
 	cursor: pointer;
 }
 
-
-/* layout editor */
+/* basic layout editor styles */
 #admin #cms-layout {
 	padding-top: 10px;
 	margin: -10px;
@@ -91,7 +90,11 @@ button.btn-primary:hover {
 	height: 100px;
 	cursor: hand;
 }
+#admin #cms-layout .section.hover {
+	background-color: #579 !important;
+}
 
+/* context menu for right click (layouteditor) */
 #cms-layout-context {
 	position: absolute;
 	top: 0px;
@@ -111,3 +114,26 @@ button.btn-primary:hover {
 	background-color: #666;
 	color: #fff;
 	cursor: pointer;
+}
+
+/* CMS Overlay */
+#cms-layout-overlay {
+	position: absolute;
+	background-color: #696;
+	opacity: 0.5;
+	color: #fff;
+	height: 100px;
+	text-align: center;
+	line-height: 3;
+	font-size: 20px;
+	cursor: pointer;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	font-weight: 700;
+}
+#admin #cms-layout #cms-layout-buttons {
+	margin: 0px -5px;
+}
+#admin #cms-layout #cms-layout-buttons button {
+	width: 80px;
+}
