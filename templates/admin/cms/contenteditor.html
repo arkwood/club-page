@@ -1,1 +1,57 @@
-This is the content editor MWAAHHAHAHA
+<div class="panel-group" id="cms-content-containers-container" role="tablist" aria-multiselectable="true">
+	{% set containerNumber = 0 %}
+	
+	{% for container in page.containers %}
+		{% set containerNumber = containerNumber + 1 %}	
+		<div class="panel panel-default">
+			<div class="panel-heading" role="tab" id="cms-content-container-{{container.ID}}">
+				<h4 class="panel-title">
+					<a data-toggle="collapse" data-parent="#cms-content-containers-container" href="#cms-content-head-{{container.ID}}" aria-expanded="true" aria-controls="#cms-content-head-{{container.ID}}">
+    					Container #{{containerNumber}}
+   					</a>
+				</h4>
+			</div>
+			<div id="cms-content-head-{{container.ID}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="cms-content-head-{{container.ID}}">
+				<div class="panel-body">
+					{% set position = 0 %}
+					
+					{% for row in container.layoutSections.rows %}
+						{% for col in row.cols %}
+							{% set position = position + 1 %}
+							<div class="row">
+								<div class="col-xs-1 center">
+									<div class="cms-layout-position">
+										{{position}}
+									</div>
+								</div>
+								<div class="col-xs-5">
+									<label>Label</label>
+									<input type="text" class="form-control" value="{{col.section.label}}"/>
+								</div>
+								<div class="col-xs-6">
+									<label>Type</label>
+									<select class="form-control">
+										{% for type in sectionTypes %}
+											<option value="{{type.identifier}}" {% if type.identifier == col.sectionType %}selected="selected"{% endif %}>{{type.label}}</option>
+										{% endfor %}
+									</select>
+								</div>
+								<p>&nbsp;</p>
+								{% for parameter in col.section.parameters %}
+									{{parameter.render|raw}}
+								{% endfor %}
+								
+								<div class="cms-content-spacer col-xs-12"></div>
+							</div>
+						{% endfor %}
+					{% endfor %}
+					<div class="row">
+						<div class="col-xs-12 right">
+							<button class="btn btn-primary">Save</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	{% endfor %}
+</div>

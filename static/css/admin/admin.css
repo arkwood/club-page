@@ -16,6 +16,13 @@ button.btn-primary:hover {
 	font-weight: bold;
 	padding-bottom: 5px;
 }
+#admin .main-area h2 {
+	font-style: italic;
+	font-size: 16px;
+	color: #ff9e2a;
+	padding-bottom: 5px;
+}
+
 
 /* backend navigation */
 #admin #navigation div.nav-entry {
@@ -75,65 +82,3 @@ button.btn-primary:hover {
 	cursor: pointer;
 }
 
-/* basic layout editor styles */
-#admin #cms-layout {
-	padding-top: 10px;
-	margin: -10px;
-	cursor: col-resize;
-}
-#admin #cms-layout .section-container {
-	padding: 10px;
-}
-#admin #cms-layout .section {
-	border: 1px solid #aaa;
-	padding: 15px;
-	height: 100px;
-	cursor: hand;
-}
-#admin #cms-layout .section.hover {
-	background-color: #579 !important;
-}
-
-/* context menu for right click (layouteditor) */
-#cms-layout-context {
-	position: absolute;
-	top: 0px;
-	left: 0px;
-}
-#cms-layout-context ul.menu {
-	list-style: none;
-	margin: 0px;
-	padding: 0px;
-}
-#cms-layout-context ul.menu li {
-	background-color: #eee;
-	border: 1px solid #ccc;
-	padding: 5px 10px;
-}
-#cms-layout-context ul.menu li:hover {
-	background-color: #666;
-	color: #fff;
-	cursor: pointer;
-}
-
-/* CMS Overlay */
-#cms-layout-overlay {
-	position: absolute;
-	background-color: #696;
-	opacity: 0.5;
-	color: #fff;
-	height: 100px;
-	text-align: center;
-	line-height: 3;
-	font-size: 20px;
-	cursor: pointer;
-	border: 1px solid #ccc;
-	border-radius: 4px;
-	font-weight: 700;
-}
-#admin #cms-layout #cms-layout-buttons {
-	margin: 0px -5px;
-}
-#admin #cms-layout #cms-layout-buttons button {
-	width: 80px;
-}

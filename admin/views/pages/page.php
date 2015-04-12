@@ -8,7 +8,8 @@ if (User::checkPermission('cms', 1)) {
 	$html = $twig->render('admin/cms/page.html', array(
 			"page" => $page, 
 			"rootPages" => $pages, 
-			"sectionTypes" => CMSRegistry::$register	
+			"sectionTypes" => CMSRegistry::$register,
+			"layouts" => LayoutTemplate::getTemplates()
 	));
     addScriptContent($html);    
 }

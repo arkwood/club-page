@@ -31,3 +31,8 @@
 .absolute {
 	position: absolute;
 }
+span.highlight-high {
+	color: #a00;
+	font-weight: bold;
+	text-decoration: underline;
+}

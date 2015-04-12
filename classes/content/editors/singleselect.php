@@ -6,7 +6,7 @@ class CMSSingleSelect extends CMSEditor {
 	
     function __construct($values) {
         $this->type = "singleselect";
-        $this->adminview = 'cmseditor/singleselect';
+        $this->adminview = 'admin/views/cmseditor/singleselect';
         $this->values = $values;
     }
 }

@@ -2,9 +2,9 @@
 class Section extends DBObject {
     
     public $view;
-    public $pageId;
+    public $label;
+    public $containerId;
     public $parameters;
-    public $width;
     public $position;
     public $sectionType;
     public $sectionColor;
@@ -13,21 +13,26 @@ class Section extends DBObject {
     function __construct($id) {
         $this->ID = $id;
         
-        $query = "select width, position, sectionview, sectiontype, pageid from section where id = " . $id;
+        $query = "select position, sectionview, sectiontype, containerid, label from section where id = " . $id;
         if ($result = mysql_query($query)) {
             while ($data = mysql_fetch_array($result)) {
-                $this->width = $data["width"];
                 $this->position = $data["position"];
                 $this->view = $data["sectionview"];
                 $this->sectionType = CMSRegistry::getType($data["sectiontype"]);
-                $this->pageId = $data["pageid"];
+                $this->containerId = $data["containerid"];
                 $this->parameters = $this->getParameters();
+                $this->label = $data["label"];
             }
         }
     }
     
     function getPage() {
-    	return new Page($this->pageId);
+    	$container = $this->getContainer();
+    	return $container->getPage();
+    }
+    
+    function getContainer() {
+    	return new Container($this->containerId);
     }
     
     function getParameters() {
@@ -71,17 +76,37 @@ class SectionParameter extends DBObject {
     
     public $name;
     public $value;
+    public $sectionParameterType;
+    public $editor;
     
     function __construct($id) {
         $this->ID = $id;
         
-        $query = "select name, value, textvalue from sectionparameter where id = " . $id;
+        $query = "select name, value, textvalue, datevalue, sectionid from sectionparameter where id = " . $id;
         if ($result = mysql_query($query)) {
             while ($data = mysql_fetch_array($result)) {
                 $this->name = $data["name"];
-                $this->value = ($data["value"] == "") ? $data["textvalue"] : $data["value"];
+                $this->value = ($data["value"] == "") ? ($data["datevalue"] == "" ? $data["textvalue"] : $data["datevalue"]) : $data["value"];
+                $this->sectionId = $data["sectionid"];
             }
         }
+        
+        $query = "select sectiontype from section where id = " . $this->sectionId;
+        if ($result = mysql_query($query)) {
+        	while ($data = mysql_fetch_array($result)) {
+        		$this->sectionParameterType = CMSRegistry::getType($data["sectiontype"]);
+        		foreach ($this->sectionParameterType->parameters as $parameter) {
+        			if ($parameter->name == $this->name) {
+        				$this->editor = $parameter->editor;
+        			}
+        		}
+        	}
+        }
+    }
+    
+    
+    function getRender() {
+    	return $this->editor->render($this, $this->sectionParameterType);
     }
 }
 ?>

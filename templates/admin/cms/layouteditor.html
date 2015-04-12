@@ -1,100 +1,67 @@
 <!--  visible sections -->
-{% for section in page.sections %}
-	<div class="section-container col-xs-12 col-md-{{section.width}}">
-		<div data-section="{{section.ID}}" data-type="{{section.sectionType.identifier}}" data-width="{{section.width}}" class="section" style="background-color: {{ section.sectionType.color }};">
-			<select class="form-control">
-				{% for type in sectionTypes %}
-					<option value="{{type.identifier}}" {% if section.sectionType.identifier == type.identifier %}selected{% endif %}>{{type.label}}</option>
+{% for container in page.containers %}
+	<div class="row layout-container-row" data-active-layout="{{container.layoutIdentifier}}">
+		<div class="col-xs-10">		
+		 	<div class="row">
+		 		<div class="col-xs-12">
+		 			<!-- layout section -->
+		 			{% for row in container.layoutSections.rows %}
+		 				<div class="row">
+		 					{% for col in row.cols %}
+		 						<div class="col-xs-{{col.width}}">
+		 							<div class="col-xs-12 section" style="background-color: {{col.backgroundColor}}" data-section-type="{{col.sectionType}}" data-section-label="{{col.section.label}}">
+		 								{{col.sectionTypeLabel}}
+		 							</div>
+		 						</div>
+		 					{% endfor %}
+		 				</div>
+		 			{% endfor %}
+		 		</div>
+		 	</div>
+		</div>
+		
+		<div class="col-xs-2 cms-layout-menubar">
+			<div class="cms-layout-menubar-content">
+				{% for layout in layouts %}
+					{% set sectionIndex = 0 %}
+					{% include 'admin/cms/layouteditor-miniview.html' %}
 				{% endfor %}
-			</select>
-		</div>
-	</div>
-{% endfor %}
-<div class="col-xs-12 col-md-12" id="cms-layout-buttons">
-	<button class="btn btn-primary btn-lg" title="Add Section" id="add-section-button">
-		<i class="fa fa-plus"></i>
-	</button>
-	
-	<button class="btn btn-primary btn-lg" title="Save Layout" id="save-layout-button">
-		<i class="fa fa-save"></i>
-	</button>
-	<!-- 
-	<div id="cms-layout-plus-icon">
-		<i class="fa fa-plus"></i>
-	</div>
-	 -->
-</div>
-
-
-<!--  palette for all the section types -->
-<div id="cms-layout-type-palette" class="hide">
-{% for type in sectionTypes %}
-	<div data-type="{{type.identifier}}" data-view="{{type.view}}" data-color="{{type.color}}"></div>
-{% endfor %}
-</div>
-
-
-<!--  recycle bin for all the deleted sections -->
-<ul id="cms-layout-recycle-bin" class="hide">
-</ul>
-
-
-<!--  context menu for right click on element -->
-<div id="cms-layout-context" style="display: none;">
-	<ul class="menu">
-		<li id="remove-section">Remove Section</li>
-		<li id="split-section">Split Section</li>
-	</ul>
-</div>
-
-<!--  overlay for drag & drop -->
-<div id="cms-layout-overlay" style="display: none;">
-	Drag & Drop to Swap Sections
-</div>
-
-<!--  modal to remove a section -->
-<div id="cms-layout-remove-modal" class="modal fade">
-	<div class="modal-dialog">
-    	<div class="modal-content">
-      		<div class="modal-header">
-      			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title">Remove Section</h4>
-			</div>
-			<div class="modal-body">
-				<p>Do you really want to delete the selected section? This will remove all the configuration parameters (content) as well.</p>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-				<button type="button" class="btn btn-primary" id="cms-layout-delete-section-button">Delete Section</button>
 			</div>
 		</div>
 	</div>
-</div>
+{% endfor %}	
 
-
-<!--  modal to split a section -->
-<div id="cms-layout-split-modal" class="modal fade">
+<div id="cms-layout-modal" class="modal fade">
 	<div class="modal-dialog">
-    	<div class="modal-content">
-      		<div class="modal-header">
-      			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title">Split Section</h4>
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">Layout Section</h4>
 			</div>
 			<div class="modal-body">
 				<p>
-				Please specify the type of the new section:
+				Please note that <b>changing the section type</b> will <span class="highlight-high">delete</span> the configuration of the section (including text content).
 				</p>
-				<select name="newSplitType" id="new-split-type" class="form-control">
-					{% for type in sectionTypes %}
-						<option value="{{type.identifier}}">{{type.label}}</option>
-					{% endfor %}
-				</select>
+				<div class="row">
+					<div class="col-xs-12">
+						<label for="cms-layout-new-label">Label</label>
+						<input type="text" class="form-control" id="cms-layout-new-label" />
+					</div>
+					
+					<div class="col-xs-12">
+						<label for="cms-layout-new-sectiontype">Type</label>
+						<select id="cms-layout-new-sectiontype" class="form-control">
+							{% for type in sectionTypes %}
+								<option value="{{type.identifier}}">{{type.label}}</option>
+							{% endfor %} 
+						</select>
+					</div>
+				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-				<button type="button" class="btn btn-primary" id="cms-layout-split-section-button">Split Section</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary">Save changes</button>
 			</div>
 		</div>
 	</div>
 </div>
-

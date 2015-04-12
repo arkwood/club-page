@@ -29,6 +29,8 @@ $twig->addGlobal('BASEURL', BASEURL);
 // add extension for i18n
 $twig->addExtension(new Twig_Extensions_Extension_I18n());
 
+$GLOBALS["twig"] = $twig;
+
 /*
  * initialize session and set header
  */

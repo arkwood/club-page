@@ -44,11 +44,20 @@ class SectionTypeParameter {
 
 class CMSEditor {
     public $type;
-    public $adminview;
+    public $template;
     
     function __construct() {
         
     }
+    
+    function render($parameter, $parameterType) {
+    	$twig = $GLOBALS["twig"];
+    	return  $twig->render('admin/cms/editors/wysiwyg.html', array(
+    			"parameter" => $parameter,
+    			"parameterType" => $parameterType
+    	));
+    }
+    
 }
 
 ?>

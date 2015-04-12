@@ -1,0 +1,95 @@
+@CHARSET "UTF-8";
+
+
+/* LAYOUT EDITOR STYLES */
+#admin #cms-layout .section {
+	border: 1px solid #aaa;
+	padding: 15px;
+	margin-top: 15px;
+	height: 100px;
+	cursor: hand;
+}
+#admin #cms-layout .section:hover {
+	box-shadow: 5px 5px 5px #888888;
+}
+
+#admin #cms-layout .cms-layout-menubar {
+	padding-right: 5px; 
+	margin-left: -10px;
+}
+#admin #cms-layout .cms-layout-menubar-content {
+	border: 1px solid #ccc;
+	margin-top: 15px;
+	padding: 10px;
+	height: 300px;
+	overflow: scroll;
+}
+#admin #cms-layout .cms-layout-menubar-content .layout {
+	margin-bottom: 10px;
+	border: 1px solid #ccc;
+	height: 80px;
+	cursor: pointer;
+}
+#admin #cms-layout #cms-layout-buttons {
+	margin: 0px -5px;
+}
+#admin #cms-layout #cms-layout-buttons button {
+	width: 80px;
+}
+
+#admin #cms-layout .cms-layout-menubar-content div.col {
+	padding: 0px;
+	margin: 0px;
+	height: 100%;
+	background-color: #ccd;
+	border: 1px solid #fff;
+	color: #fff;
+	text-align: center;
+} 
+#admin #cms-layout .cms-layout-menubar-content div.col span {
+	font-weight: bold;
+	height: 100%;
+	vertical-align: -20px;
+}
+#admin #cms-layout .cms-layout-menubar-content div.col.col-include1 {
+	border: 0px;
+	background-color: #ccd;
+}
+#admin #cms-layout .cms-layout-menubar-content div.active-layout {
+	background-color: #428bca !important;
+}
+#admin #cms-layout .cms-layout-menubar-content div.col-include1 .layout {
+	border: 0px !important;
+	margin-bottom: 0px;
+}
+#admin #cms-layout .cms-layout-menubar-content .total-row-1 {
+	height: 80px;
+}
+#admin #cms-layout .cms-layout-menubar-content .total-row-2 {
+	height: 40px;
+}
+#admin #cms-layout .cms-layout-menubar-content .total-row-3 {
+	height: 26px;
+}
+#admin #cms-layout .cms-layout-menubar-content .total-row-4 {
+	height: 20px;
+}
+
+
+/* CONTENT EDITOR STYLES */
+#admin .cms-content-spacer {
+	margin-bottom: 20px;
+	height: 20px;
+	border-bottom: 1px solid #ccc;
+	/* border-bottom: 1px solid #ff9e2a; */
+}
+#admin .cms-layout-position {
+	font-size: 18px;
+	color: #fff;
+	background-color: #aaa;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	padding: 10px;
+	text-align: center;
+	margin-top: 10px;
+}

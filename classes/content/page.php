@@ -8,7 +8,7 @@ class Page extends DBObject {
     public $parentPageId = false;
     
     
-    public $sections = array();
+    public $containers = array();
     public $subPages = array();
     
     
@@ -29,7 +29,7 @@ class Page extends DBObject {
         }
         
         $this->subPages = $this->getSubPages();
-        $this->sections = $this->getSections();
+        $this->containers = $this->getContainers();
     }
     
     
@@ -55,13 +55,13 @@ class Page extends DBObject {
     	return $pages;
     }
     
-    function getSections() {
+    function getContainers() {
         $list = array();
         
-        $query = "select id from section where pageid = " . $this->ID . " order by position";
+        $query = "select id from container where pageid = " . $this->ID . " order by position";
         if ($datasrc = mysql_query($query)) {
             while ($data = mysql_fetch_array($datasrc)) {
-                array_push($list, new Section($data["id"]));
+                array_push($list, new Container($data["id"]));
             }
         }
         

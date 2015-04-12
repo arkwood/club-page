@@ -1,0 +1,20 @@
+<div class="col-xs-12 layout" {% if layout.isInclude == false %}data-title="{{layout.identifier}}" data-placement="bottom"{% endif %}>
+	{% for row in layout.rows %}
+		<div class="row total-row-{{layout.totalRows}}">
+			{% for col in row.cols %}
+				<div class="col col-include{{col.isInclude}} col-xs-{{col.width}}">
+					{% if col.isInclude %}
+						{% set layout = col.include %}
+						{% include 'admin/cms/layouteditor-miniview.html' %}
+						{% set sectionIndex = sectionIndex + col.include.totalSections %}
+					{% else %}
+						{% set sectionIndex = sectionIndex + 1 %}
+						<p>
+							<span>{{sectionIndex}}</span>
+						</p>
+					{% endif %}
+				</div>
+			{% endfor %}
+		</div>
+	{% endfor %}
+</div>

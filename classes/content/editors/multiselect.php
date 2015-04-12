@@ -6,7 +6,7 @@ class CMSMultiSelect extends CMSEditor {
 	
     function __construct($values) {
         $this->type = "multiselect";
-        $this->adminview = 'cmseditor/multiselect';
+        $this->adminview = 'admin/views/cmseditor/multiselect';
         $this->values = $values;
     }
 }

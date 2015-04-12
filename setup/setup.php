@@ -38,8 +38,9 @@ mysql_select_db(MYSQL_DATABASE);
 
 foreach (scandir('datamodel') as $entry) {
     // skip current directory and parent directory
-    if ($entry === "." || $entry === "..")
-                continue;
+    if ($entry === "." || $entry === ".." || $entry == 'data')
+		continue;
+    
     echo '  <h3 style="border-bottom: 1px solid #900; color: #900;">datamodel/' . $entry . '</h3>
             <p style="font-family: Courier;">';    
     require_once 'datamodel/' . $entry;
