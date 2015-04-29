@@ -6,11 +6,6 @@ class CMSTextEditor extends CMSEditor {
         $this->type = "wysiwyg";
         $this->adminview = 'admin/views/cmseditor/wysiwyg';
     }
-    
-    
-    
-    
-    
 }
 
 ?>

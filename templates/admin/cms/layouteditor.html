@@ -10,7 +10,8 @@
 		 					{% for col in row.cols %}
 		 						<div class="col-xs-{{col.width}}">
 		 							<div class="col-xs-12 section" style="background-color: {{col.backgroundColor}}" data-section-type="{{col.sectionType}}" data-section-label="{{col.section.label}}">
-		 								{{col.sectionTypeLabel}}
+		 								{{col.section.sectionType.label}}<br/>
+		 								{{col.section.label}}
 		 							</div>
 		 						</div>
 		 					{% endfor %}

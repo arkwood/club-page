@@ -6,11 +6,11 @@
 	{% endif %}
 	<form action="{{BASEURL}}/admin/backend.php" method="post">
 		<div class="form-group">
-			<label>{% trans %}Login{% endtrans %}n</label>
+			<label>{% trans %}Login{% endtrans %}</label>
 			<input type="text" name="username" class="form-control" placeholder="Login"/>
 			
-			<label>{% trans %}Passwort{% endtrans %}</label>
-			<input type="password" name="password" class="form-control" placeholder="Passwort"/>
+			<label>{% trans %}Password{% endtrans %}</label>
+			<input type="password" name="password" class="form-control" placeholder="{% trans %}Password{% endtrans %}"/>
 			
 			<button id="login-button" name="login" class="btn btn-primary">{% trans %}Login{% endtrans %}</button>
 		</div>

@@ -52,6 +52,7 @@ class CMSEditor {
     
     function render($parameter, $parameterType) {
     	$twig = $GLOBALS["twig"];
+    	print_r($parameter);
     	return  $twig->render('admin/cms/editors/wysiwyg.html', array(
     			"parameter" => $parameter,
     			"parameterType" => $parameterType
