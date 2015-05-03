@@ -1,9 +1,10 @@
-<div class="col-xs-12 layout" data-title="{{layout.identifier}}" data-placement="bottom">
+{{container.layoutIdentifier}}
+<div class="col-xs-12 layout {% if layout.identifier == container.layout.identifier %}active-layout{% endif %}" data-title="{{layout.identifier}}" data-placement="bottom">
 	{% for row in layout.rows %}
 		<div class="row total-row-{{layout.totalRows}}">
 			{% for child in row.children %}
 				{% if child.rowFlag %}
-					<div class="row col-xs-12">
+					<div class="col-xs-{{child.width}} no-padding">
 						{% for subchild in child.row.children %}
 							<div class="col col-xs-{{subchild.width}} layout-child subchild total-row-{{row.totalRows}}">
 								<p>
@@ -23,3 +24,5 @@
 		</div>
 	{% endfor %}
 </div>
+
+

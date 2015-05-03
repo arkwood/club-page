@@ -7931,7 +7931,7 @@ body {
   color: #fff;
 }
 .no-padding {
-  padding: 0px;
+  padding: 0px !important;
 }
 .float-left {
   float: left;
@@ -8037,6 +8037,9 @@ button.btn-primary:hover {
 }
 
 /* LAYOUT EDITOR STYLES */
+#admin {
+  /* CONTENT EDITOR STYLES */
+}
 #admin #cms-layout .section {
   border: 1px solid #aaa;
   padding: 15px;
@@ -8065,6 +8068,7 @@ button.btn-primary:hover {
   border: 1px solid #ccc;
   height: 80px;
   cursor: pointer;
+  background-color: #ccd;
 }
 #admin #cms-layout #cms-layout-buttons {
   margin: 0px -5px;
@@ -8076,7 +8080,6 @@ button.btn-primary:hover {
   padding: 0px;
   margin: 0px;
   height: 100%;
-  background-color: #ccd;
   border: 1px solid #fff;
   color: #fff;
   text-align: center;
@@ -8094,6 +8097,12 @@ button.btn-primary:hover {
 }
 #admin #cms-layout .cms-layout-menubar-content .total-row-1 .layout-child {
   height: 80px;
+}
+#admin #cms-layout .cms-layout-menubar-content .total-row-1 .subchild.total-row-2 {
+  height: 40px;
+}
+#admin #cms-layout .cms-layout-menubar-content .total-row-1 .subchild.total-row-2 .layout-child {
+  height: 40px;
 }
 #admin #cms-layout .cms-layout-menubar-content .total-row-2 {
   height: 40px;
@@ -8115,16 +8124,17 @@ button.btn-primary:hover {
 }
 #admin #cms-layout .cms-layout-menubar-content .layout-child {
   border: 1px solid #ccc;
-  background-color: #eee;
 }
-/* CONTENT EDITOR STYLES */
-#admin .cms-content-spacer {
+#admin #cms-layout .cms-layout-menubar-content .layout-child .row {
+  margin: 0px;
+}
+#admin #cms-content-tab .cms-content-spacer {
   margin-bottom: 20px;
   height: 20px;
   border-bottom: 1px solid #ccc;
   /* border-bottom: 1px solid #ff9e2a; */
 }
-#admin .cms-layout-position {
+#admin #cms-content-tab .cms-layout-position {
   font-size: 18px;
   color: #fff;
   background-color: #aaa;
