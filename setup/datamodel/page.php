@@ -33,6 +33,7 @@ $tableCreation = array(
             `sectiontype` varchar(255) NOT NULL,
 			`sectionview` varchar(255) NOT NULL,
             `position` int(11) NOT NULL,
+			`placeholder` int(11) NOT NULL,
 			`label` varchar(255),
             PRIMARY KEY (`id`)
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8;",
@@ -52,7 +53,6 @@ $tableCreation = array(
 		"CREATE TABLE IF NOT EXISTS `layout` (
 			`id` int(11) NOT NULL AUTO_INCREMENT,
 			`identifier` varchar(255) NOT NULL,
-			`include` tinyint NOT NULL,
             `position` int(11),
             `rows` text NOT NULL,
             PRIMARY KEY (`id`)
@@ -74,16 +74,13 @@ executeSQL($tableCreation);
 	
 	for ($i = 0; $i < sizeof($layouts); $i++) {
 		$layout = $layouts[$i];
-		array_push($layoutSQL, "insert into layout (id, identifier, include, position, rows) 
-			values (" . ($i + 1) . ", '" . $layout->{'identifier'} . "', " . ($layout->isInclude ? "1" : "0") . ", " . $i . ", '" . json_encode($layout->rows) . "')");
+		array_push($layoutSQL, "insert into layout (identifier, position, rows) 
+			values ('" . $layout->{'identifier'} . "', " . $i . ", '" . json_encode($layout->rows) . "')");
 	}
 	executeSQL($layoutSQL);
 	echo '<br/>';
 	
-	$homeLayout = '[{"cols":[{"width": 6},{"width": 6} ]}, {"cols": [ {"width": 12} ]} ]';
-	$newsLayout = '[{"cols":[{"width":12}]}]';
-	$herrenLayout = '[{"cols":[{"width": 6},{"width": 6} ]}, {"cols": [ {"width": 12} ]} ]';
-
+	
 	/*
 	 * Handle the rest of the data
 	 */
@@ -104,14 +101,14 @@ executeSQL($tableCreation);
     	 */ 
     	
     	// home
-    	"insert into container (id, pageid, position, layout, layoutidentifier)
-    		values (1, 1, 0, '" . $homeLayout . "', 'top-split')",
+    	"insert into container (id, pageid, position, layoutidentifier)
+    		values (1, 1, 0, 'top-split')",
     	// news
-    	"insert into container (id, pageid, position, layout, layoutidentifier)
-    		values (2, 2, 0, '" . $newsLayout . "', 'main')",
+    	"insert into container (id, pageid, position, layoutidentifier)
+    		values (2, 2, 0, 'main')",
     	// herren
-    	"insert into container (id, pageid, position, layout, layoutidentifier)
-    		values (3, 3, 0, '" . $herrenLayout . "', 'top-split')",
+    	"insert into container (id, pageid, position, layoutidentifier)
+    		values (3, 3, 0, 'top-split')",
     	
     	/*
     	 * Sections
@@ -119,27 +116,27 @@ executeSQL($tableCreation);
     		
         // sections for home
         //
-        "insert into section (id, containerid, sectiontype, sectionview, position, label) 
-            values (1, 1, 'wysiwyg', 'views/content/wysiwyg', 0, 'Home Left')",
+        "insert into section (id, containerid, sectiontype, sectionview, position, label, placeholder) 
+            values (1, 1, 'wysiwyg', 'views/content/wysiwyg', 0, 'Home Left', 1)",
             // section parameter
             "insert into sectionparameter (id, sectionid, name, textvalue) 
                 values (1, 1, 'wysiwyg', 'This is the content of the home page')",
     	//
-    	"insert into section (id, containerid, sectiontype, sectionview, position, label)
-            values (2, 1, 'wysiwyg', 'views/content/wysiwyg', 1, 'Home Right')",
+    	"insert into section (id, containerid, sectiontype, sectionview, position, label, placeholder)
+            values (2, 1, 'wysiwyg', 'views/content/wysiwyg', 1, 'Home Right', 2)",
             // section parameter
     		"insert into sectionparameter (id, sectionid, name, textvalue)
                 values (2, 2, 'wysiwyg', 'This is the content of the home page')",
     	//
-    	"insert into section (id, containerid, sectiontype, sectionview, position, label)
-            values (3, 1, 'wysiwyg', 'views/content/wysiwyg', 2, 'Home Bottom')",
+    	"insert into section (id, containerid, sectiontype, sectionview, position, label, placeholder)
+            values (3, 1, 'wysiwyg', 'views/content/wysiwyg', 2, 'Home Bottom', 3)",
 			// section parameter
     		"insert into sectionparameter (id, sectionid, name, textvalue)
                 values (3, 3, 'wysiwyg', 'This is the content of the home page')",
     	// section for news
     	//
-        "insert into section (id, containerid, sectiontype, sectionview, position, label) 
-            values (4, 2, 'newslist', 'views/news/newslist', 0, 'News List')",
+        "insert into section (id, containerid, sectiontype, sectionview, position, label, placeholder) 
+            values (4, 2, 'newslist', 'views/news/newslist', 0, 'News List', 1)",
             // section parameter
             "insert into sectionparameter (id, sectionid, name, value)
                 values (4, 4, 'category', 1)"

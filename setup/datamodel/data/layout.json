@@ -1,210 +1,282 @@
 {
-  "layouts": [
-    {
-      "isInclude": false,
-      "identifier": "main",
-      "rows": [
+    "layouts": [
         {
-          "cols": [
-            {
-              "width": 12
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "isInclude": false,
-      "identifier": "left-sidebar",
-      "rows": [
-        {
-          "cols": [
-            {
-              "width": 2
-            },
-            {
-              "width": 10
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "isInclude": false,
-      "identifier": "right-sidebar",
-      "rows": [
-        {
-          "cols": [
-            {
-              "width": 10
-            },
-            {
-              "width": 2
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "isInclude": false,
-      "identifier": "left-sidebar-splitmain2",
-      "rows": [
-        {
-          "cols": [
-            {
-              "width": 2
-            },
-            {
-              "width": 10,
-              "include": "2-rows"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "isInclude": false,
-      "identifier": "right-sidebar-splitmain2",
-      "rows": [
-        {
-          "cols": [
-            {
-              "width": 10,
-              "include": "2-rows"
-            },
-            {
-              "width": 2
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "isInclude": false,
-      "identifier": "bottom-split",
-      "rows": [
-        {
-          "cols": [
-            {
-              "width": 12
-            }
-          ]
+            "identifier": "main",
+            "rows": [
+                {
+                    "position": 1,
+                    "children": [
+                        {
+                            "position": 1,
+                            "width": 12,
+                            "isRow": false,
+                            "placeholder": 1
+                        }
+                    ]
+                }
+            ]
         },
         {
-          "cols": [
-            {
-              "width": 6
-            },
-            {
-              "width": 6
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "isInclude": false,
-      "identifier": "top-split",
-      "rows": [
-        {
-          "cols": [
-            {
-              "width": 6
-            },
-            {
-              "width": 6
-            }
-          ]
+            "identifier": "left-sidebar",
+            "rows": [
+                {
+                    "position": 1,
+                    "children": [
+                        {
+                            "position": 1,
+                            "width": 2,
+                            "isRow": false,
+                            "placeholder": 1
+                        },
+                        {
+                            "position": 2,
+                            "width": 10,
+                            "isRow": false,
+                            "placeholder": 2
+                        }
+                    ]
+                }
+            ]
         },
         {
-          "cols": [
-            {
-              "width": 12
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "isInclude": false,
-      "identifier": "left-split",
-      "rows": [
-        {
-          "cols": [
-            {
-              "width": 6,
-              "include": "2-rows"
-            },
-            {
-              "width": 6
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "isInclude": false,
-      "identifier": "right-split",
-      "rows": [
-        {
-          "cols": [
-            {
-              "width": 6
-            },
-            {
-              "width": 6,
-              "include": "2-rows"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "isInclude": true,
-      "identifier": "2-rows",
-      "rows": [
-        {
-          "cols": [
-            {
-              "width": 12
-            }
-          ]
+            "identifier": "right-sidebar",
+            "rows": [
+                {
+                    "position": 1,
+                    "children": [
+                        {
+                            "position": 1,
+                            "width": 10,
+                            "isRow": false,
+                            "placeholder": 1
+                        },
+                        {
+                            "position": 2,
+                            "width": 2,
+                            "isRow": false,
+                            "placeholder": 2
+                        }
+                    ]
+                }
+            ]
         },
         {
-          "cols": [
-            {
-              "width": 12
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "isInclude": true,
-      "identifier": "3-rows",
-      "rows": [
-        {
-          "cols": [
-            {
-              "width": 12
-            }
-          ]
+            "identifier": "left-sidebar-splitmain2",
+            "rows": [
+                {
+                    "position": 1,
+                    "children": [
+                        {
+                            "position": 1,
+                            "width": 2,
+                            "isRow": false,
+                            "placeholder": 1
+                        },
+                        {
+                            "position": 2,
+                            "width": 10,
+                            "isRow": true,
+                            "row": {
+                                "position": 1,
+                                "children": [
+                                    {
+                                        "position": 1,
+                                        "width": 12,
+                                        "isRow": false,
+                                        "placeholder": 2
+                                    },
+                                    {
+                                        "position": 2,
+                                        "width": 12,
+                                        "isRow": false,
+                                        "placeholder": 3
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
         },
         {
-          "cols": [
-            {
-              "width": 12
-            }
-          ]
+            "identifier": "right-sidebar-splitmain2",
+            "rows": [
+                {
+                    "position": 1,
+                    "children": [
+                        {
+                            "position": 1,
+                            "width": 10,
+                            "isRow": true,
+                            "row": {
+                                "position": 1,
+                                "children": [
+                                    {
+                                        "position": 1,
+                                        "width": 12,
+                                        "isRow": false,
+                                        "placeholder": 1
+                                    },
+                                    {
+                                        "position": 2,
+                                        "width": 12,
+                                        "isRow": false,
+                                        "placeholder": 2
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "position": 2,
+                            "width": 2,
+                            "isRow": false,
+                            "placeholder": 3
+                        }
+                    ]
+                }
+            ]
         },
         {
-          "cols": [
-            {
-              "width": 12
-            }
-          ]
+            "identifier": "bottom-split",
+            "rows": [
+                {
+                    "position": 1,
+                    "children": [
+                        {
+                            "position": 1,
+                            "width": 12,
+                            "isRow": false,
+                            "placeholder": 1
+                        }
+                    ]
+                },
+                {
+                    "position": 2,
+                    "children": [
+                        {
+                            "position": 1,
+                            "width": 6,
+                            "isRow": false,
+                            "placeholder": 2
+                        },
+                        {
+                            "position": 2,
+                            "width": 6,
+                            "isRow": false,
+                            "placeholder": 3
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "identifier": "top-split",
+            "rows": [
+                {
+                    "position": 1,
+                    "children": [
+                        {
+                            "position": 1,
+                            "width": 6,
+                            "isRow": false,
+                            "placeholder": 1
+                        },
+                        {
+                            "position": 2,
+                            "width": 6,
+                            "isRow": false,
+                            "placeholder": 2
+                        }
+                    ]
+                },
+                {
+                    "position": 2,
+                    "children": [
+                        {
+                            "position": 1,
+                            "width": 12,
+                            "isRow": false,
+                            "placeholder": 3
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "identifier": "left-split",
+            "rows": [
+                {
+                    "position": 1,
+                    "children": [
+                        {
+                            "position": 1,
+                            "width": 6,
+                            "isRow": true,
+                            "row": {
+                                "position": 1,
+                                "children": [
+                                    {
+                                        "position": 1,
+                                        "width": 12,
+                                        "isRow": false,
+                                        "placeholder": 1
+                                    },
+                                    {
+                                        "position": 2,
+                                        "width": 12,
+                                        "isRow": false,
+                                        "placeholder": 2
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "position": 2,
+                            "width": 6,
+                            "isRow": false,
+                            "placeholder": 3
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "identifier": "right-split",
+            "rows": [
+                {
+                    "position": 1,
+                    "children": [
+                        {
+                            "position": 1,
+                            "width": 6,
+                            "isRow": false,
+                            "placeholder": 1
+                        },
+                        {
+                            "position": 2,
+                            "width": 6,
+                            "isRow": true,
+                            "row": {
+                                "position": 1,
+                                "children": [
+                                    {
+                                        "position": 1,
+                                        "width": 12,
+                                        "isRow": false,
+                                        "placeholder": 2
+                                    },
+                                    {
+                                        "position": 2,
+                                        "width": 12,
+                                        "isRow": false,
+                                        "placeholder": 3
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }

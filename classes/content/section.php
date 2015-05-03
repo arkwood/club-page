@@ -8,12 +8,13 @@ class Section extends DBObject {
     public $position;
     public $sectionType;
     public $sectionColor;
+    public $placeholder;
     
     
     function __construct($id) {
         $this->ID = $id;
         
-        $query = "select position, sectionview, sectiontype, containerid, label from section where id = " . $id;
+        $query = "select position, sectionview, sectiontype, containerid, label, placeholder from section where id = " . $id;
         if ($result = mysql_query($query)) {
             while ($data = mysql_fetch_array($result)) {
                 $this->position = $data["position"];
@@ -22,6 +23,7 @@ class Section extends DBObject {
                 $this->containerId = $data["containerid"];
                 $this->parameters = $this->getParameters();
                 $this->label = $data["label"];
+                $this->placeholder = $data["placeholder"];
             }
         }
     }

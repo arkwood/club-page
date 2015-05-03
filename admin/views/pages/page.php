@@ -9,7 +9,7 @@ if (User::checkPermission('cms', 1)) {
 			"page" => $page, 
 			"rootPages" => $pages, 
 			"sectionTypes" => CMSRegistry::$register,
-			"layouts" => LayoutTemplate::getTemplates()
+			"layouts" => CMSRegistry::getLayouts()
 	));
     addScriptContent($html);    
 }

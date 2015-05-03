@@ -2,6 +2,7 @@
 
 class CMSRegistry {
     public static $register = array();
+    public static $layouts = array();
     
     static function register($sectionType) {
         array_push(CMSRegistry::$register, $sectionType);
@@ -15,6 +16,29 @@ class CMSRegistry {
     	}
     	
     	return false;
+    }
+    
+    
+    
+    
+    
+    static function getLayoutByIdentifier($identifier) {
+    	$layouts = CMSRegistry::getLayouts();
+    	return $layouts[$identifier];
+    }
+    
+    static function getLayouts() {
+    	$list = array();
+    	$query = "select id from layout order by position";
+    
+    	if ($result = mysql_query($query)) {
+    		while ($data = mysql_fetch_array($result)) {
+    			$layout = new Layout($data["id"]);
+    			$list[$layout->identifier] = $layout;
+    		}
+    	}
+    
+    	return $list;
     }
 }
 

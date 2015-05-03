@@ -7917,3 +7917,220 @@ body {
 .fa-medium:before {
   content: "\f23a";
 }
+
+.right {
+  text-align: right;
+}
+.left {
+  text-align: left;
+}
+.center {
+  text-align: center;
+}
+.font-white {
+  color: #fff;
+}
+.no-padding {
+  padding: 0px;
+}
+.float-left {
+  float: left;
+}
+.float-right {
+  float: right;
+}
+.tab-1 {
+  padding-left: 2em;
+}
+.tab-2 {
+  padding-left: 4em;
+}
+.tab-3 {
+  padding-left: 6em;
+}
+.absolute {
+  position: absolute;
+}
+span.highlight-high {
+  color: #a00;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+button.btn-primary {
+  background-color: #ff9e2a;
+}
+button.btn-primary:hover {
+  background-color: #fca73e;
+  box-shadow: 2px 2px 2px #ccc;
+}
+#admin {
+  margin-top: 10px;
+}
+#admin .main-area h1 {
+  border-bottom: 1px solid #ff9e2a;
+  color: #ff9e2a;
+  font-size: 18px;
+  font-weight: bold;
+  padding-bottom: 5px;
+}
+#admin .main-area h2 {
+  font-style: italic;
+  font-size: 16px;
+  color: #ff9e2a;
+  padding-bottom: 5px;
+}
+/* backend navigation */
+#admin #navigation div.nav-entry {
+  background-color: #eee;
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+#admin #navigation div.nav-entry:hover {
+  background-color: #666;
+  cursor: pointer;
+}
+#admin #navigation div.nav-entry:hover a {
+  color: #fff;
+}
+/* list styles */
+#admin .list-option {
+  margin-bottom: 10px;
+}
+#admin .list-option a {
+  text-decoration: none;
+}
+#admin .list-option a:hover {
+  text-decoration: none;
+}
+#admin .list-header {
+  background-color: #666;
+  color: #fff;
+  padding: 5px;
+  padding-left: 20px;
+}
+#admin .list-container {
+  border-bottom: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  margin: 0px;
+}
+#admin .list-entry {
+  margin: 0px;
+  color: #f00;
+  padding: 5px;
+}
+#admin .list-entry:nth-child(even) {
+  background-color: #fefefe;
+}
+#admin .list-entry:nth-child(odd) {
+  background-color: #f3f3f3;
+}
+#admin .list-container .list-entry:hover {
+  background-color: #FFDFBA;
+}
+#admin .tree i.fa-plus,
+#admin .tree i.fa-minus {
+  margin-left: -15px;
+  margin-top: 3px;
+  cursor: pointer;
+}
+
+/* LAYOUT EDITOR STYLES */
+#admin #cms-layout .section {
+  border: 1px solid #aaa;
+  padding: 15px;
+  text-align: center;
+  margin-top: 15px;
+  padding-top: 45px;
+  height: 143px;
+  cursor: hand;
+}
+#admin #cms-layout .section:hover {
+  box-shadow: 5px 5px 5px #888888;
+}
+#admin #cms-layout .cms-layout-menubar {
+  padding-right: 5px;
+  margin-left: -10px;
+}
+#admin #cms-layout .cms-layout-menubar-content {
+  border: 1px solid #ccc;
+  margin-top: 15px;
+  padding: 10px;
+  height: 300px;
+  overflow: scroll;
+}
+#admin #cms-layout .cms-layout-menubar-content .layout {
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  height: 80px;
+  cursor: pointer;
+}
+#admin #cms-layout #cms-layout-buttons {
+  margin: 0px -5px;
+}
+#admin #cms-layout #cms-layout-buttons button {
+  width: 80px;
+}
+#admin #cms-layout .cms-layout-menubar-content div.col {
+  padding: 0px;
+  margin: 0px;
+  height: 100%;
+  background-color: #ccd;
+  border: 1px solid #fff;
+  color: #fff;
+  text-align: center;
+}
+#admin #cms-layout .cms-layout-menubar-content div.col span {
+  font-weight: bold;
+  height: 100%;
+  vertical-align: -20px;
+}
+#admin #cms-layout .cms-layout-menubar-content div.active-layout {
+  background-color: #428bca !important;
+}
+#admin #cms-layout .cms-layout-menubar-content .total-row-1 {
+  height: 80px;
+}
+#admin #cms-layout .cms-layout-menubar-content .total-row-1 .layout-child {
+  height: 80px;
+}
+#admin #cms-layout .cms-layout-menubar-content .total-row-2 {
+  height: 40px;
+}
+#admin #cms-layout .cms-layout-menubar-content .total-row-2 .layout-child {
+  height: 40px;
+}
+#admin #cms-layout .cms-layout-menubar-content .total-row-2 .subchild.total-row-1 {
+  height: 40px;
+}
+#admin #cms-layout .cms-layout-menubar-content .total-row-2 .subchild.total-row-2 {
+  height: 20px;
+}
+#admin #cms-layout .cms-layout-menubar-content .total-row-2 .subchild.total-row-2 .layout-child {
+  height: 20px;
+}
+#admin #cms-layout .cms-layout-menubar-content .total-row-3 {
+  height: 26px;
+}
+#admin #cms-layout .cms-layout-menubar-content .layout-child {
+  border: 1px solid #ccc;
+  background-color: #eee;
+}
+/* CONTENT EDITOR STYLES */
+#admin .cms-content-spacer {
+  margin-bottom: 20px;
+  height: 20px;
+  border-bottom: 1px solid #ccc;
+  /* border-bottom: 1px solid #ff9e2a; */
+}
+#admin .cms-layout-position {
+  font-size: 18px;
+  color: #fff;
+  background-color: #aaa;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+  margin-top: 10px;
+}
