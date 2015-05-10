@@ -1,3 +1,4 @@
 tpl_compile/cache
 .css
 node_modules
+config.php
