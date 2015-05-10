@@ -66,10 +66,29 @@ class Section extends DBObject {
         return $parameter->value;
     }
     
+
+    function updateParameter($name, $value) {
+    	$parameter = $this->getParameter($name);
+    	$parameter->updateValue($value);
+    }
+    
+    function updateLabel($newLabel) {
+    	mysql_query("update section set label = '" . $newLabel . "' where id = " . $this->ID);
+    	$this->label = $newLabel;
+    }
+    
     
     function updatePosition($newPosition) {
-    	mysql_query('update section set position = ' . $newPosition . ' where id = ' . $this->ID);
+    	mysql_query("update section set position = " . $newPosition . " where id = " . $this->ID);
     	$this->position = $newPosition;
+    }
+    
+    /**
+     * Rendering function for the front end (renders the entire section)
+     */
+    function getRender() {
+    	$twig = $GLOBALS["twig"];
+    	return includeView($this->view . '.php', $twig, $this);
     }
 }
 
@@ -80,6 +99,9 @@ class SectionParameter extends DBObject {
     public $value;
     public $sectionParameterType;
     public $editor;
+    public $sectionId;
+    
+    public $valueField;
     
     function __construct($id) {
         $this->ID = $id;
@@ -89,6 +111,7 @@ class SectionParameter extends DBObject {
             while ($data = mysql_fetch_array($result)) {
                 $this->name = $data["name"];
                 $this->value = ($data["value"] == "") ? ($data["datevalue"] == "" ? $data["textvalue"] : $data["datevalue"]) : $data["value"];
+                $this->valueField = ($data["value"] == "") ? ($data["datevalue"] == "" ? 'textvalue' : 'datevalue') : 'value';
                 $this->sectionId = $data["sectionid"];
             }
         }
@@ -107,8 +130,21 @@ class SectionParameter extends DBObject {
     }
     
     
+    /**
+     * Updates the value of this section parameter.
+     * 
+     * @param Object $newValue a string or date
+     */
+    function updateValue($newValue) {
+    	mysql_query("update sectionparameter set " . $this->valueField . " = '" . $newValue . "' where id = " . $this->ID);
+    	$this->value = $newValue;
+    }
+    
+    /**
+     * Rendering function for the back end (renders the editor into the form)
+     */
     function getRender() {
-    	return $this->editor->render($this, $this->sectionParameterType);
+    	return $this->editor->render($this, $this->sectionParameterType, new Section($this->sectionId));
     }
 }
 ?>

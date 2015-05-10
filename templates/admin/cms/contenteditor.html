@@ -11,43 +11,40 @@
    					</a>
 				</h4>
 			</div>
-			<div id="cms-content-head-{{container.ID}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="cms-content-head-{{container.ID}}">
+			<div id="cms-content-head-{{container.ID}}" data-container-id="{{container.ID}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="cms-content-head-{{container.ID}}">
 				<div class="panel-body">
 					{% set position = 0 %}
 					
-					{% for row in container.layoutSections.rows %}
-						{% for col in row.cols %}
-							{% set position = position + 1 %}
-							<div class="row">
-								<div class="col-xs-1 center">
-									<div class="cms-layout-position">
-										{{position}}
-									</div>
+					{% for section in container.sections %}
+						<div class="row" data-section-id="{{section.ID}}">
+							<div class="col-xs-1 center">
+								<div class="cms-layout-position">
+									{{section.placeholder}}
 								</div>
-								<div class="col-xs-5">
-									<label>Label</label>
-									<input type="text" class="form-control" value="{{col.section.label}}"/>
-								</div>
-								<div class="col-xs-6">
-									<label>Type</label>
-									<select class="form-control">
-										{% for type in sectionTypes %}
-											<option value="{{type.identifier}}" {% if type.identifier == col.sectionType %}selected="selected"{% endif %}>{{type.label}}</option>
-										{% endfor %}
-									</select>
-								</div>
-								<p>&nbsp;</p>
-								{% for parameter in col.section.parameters %}
-									{{parameter.render|raw}}
-								{% endfor %}
-								
-								<div class="cms-content-spacer col-xs-12"></div>
 							</div>
-						{% endfor %}
+							<div class="col-xs-5">
+								<label>Label</label>
+								<input type="text" class="form-control" name="label" value="{{section.label}}"/>
+							</div>
+							<div class="col-xs-6">
+								<label>Type</label>
+								<select class="form-control" name="sectionType" disabled="disabled">
+									{% for type in sectionTypes %}
+										<option value="{{type.identifier}}" {% if type.identifier == section.sectionType.identifier %}selected="selected"{% endif %}>{{type.label}}</option>
+									{% endfor %}
+								</select>
+							</div>
+							<p>&nbsp;</p>
+							{% for parameter in section.parameters %}
+								{{parameter.render|raw}}
+							{% endfor %}
+							
+							<div class="cms-content-spacer col-xs-12"></div>
+						</div>
 					{% endfor %}
 					<div class="row">
 						<div class="col-xs-12 right">
-							<button class="btn btn-primary">Save</button>
+							<button class="btn btn-primary" data-url="{{BASEURL}}/admin/api.php" data-action="cms/updateContent">Save</button>
 						</div>
 					</div>
 				</div>

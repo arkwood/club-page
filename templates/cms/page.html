@@ -1,0 +1,25 @@
+{% for container in page.containers %}
+	<div class="row">
+		<div class="col-xs-12">
+			{% for row in container.rows %}
+				<div class="row">
+					{% for child in row.children %}
+						{% if child.rowFlag %}
+							<div class="col-xs-{{child.width}} no-padding">
+								{% for subchild in child.row.children %}
+									<div class="col-xs-{{subchild.width}}">
+										{{subchild.section.render|raw}}
+									</div>
+								{% endfor %}
+							</div>
+						{% else %}
+							<div class="col-xs-{{child.width}}">
+								{{child.section.render|raw}}
+							</div>
+						{% endif %}
+					{% endfor %}
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+{% endfor %}

@@ -10,3 +10,13 @@ $(document).ready(function() {
 		}
 	});
 });
+
+
+
+function addLoadingAnimation(element) {
+	$('#spin-template').clone().prepend($(element));
+}
+
+function removeLoadingAnimation(element) {
+	$(element).find('span.fa').remove();
+}

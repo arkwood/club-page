@@ -120,19 +120,19 @@ executeSQL($tableCreation);
             values (1, 1, 'wysiwyg', 'views/content/wysiwyg', 0, 'Home Left', 1)",
             // section parameter
             "insert into sectionparameter (id, sectionid, name, textvalue) 
-                values (1, 1, 'wysiwyg', 'This is the content of the home page')",
+                values (1, 1, 'wysiwyg', 'This is the left-side content of the home page')",
     	//
     	"insert into section (id, containerid, sectiontype, sectionview, position, label, placeholder)
             values (2, 1, 'wysiwyg', 'views/content/wysiwyg', 1, 'Home Right', 2)",
             // section parameter
     		"insert into sectionparameter (id, sectionid, name, textvalue)
-                values (2, 2, 'wysiwyg', 'This is the content of the home page')",
+                values (2, 2, 'wysiwyg', 'This is the right-side content of the home page')",
     	//
     	"insert into section (id, containerid, sectiontype, sectionview, position, label, placeholder)
             values (3, 1, 'wysiwyg', 'views/content/wysiwyg', 2, 'Home Bottom', 3)",
 			// section parameter
     		"insert into sectionparameter (id, sectionid, name, textvalue)
-                values (3, 3, 'wysiwyg', 'This is the content of the home page')",
+                values (3, 3, 'wysiwyg', 'This is the bottom-end content of the home page')",
     	// section for news
     	//
         "insert into section (id, containerid, sectiontype, sectionview, position, label, placeholder) 

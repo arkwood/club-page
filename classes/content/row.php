@@ -21,20 +21,20 @@ class CMSRow {
 		
 		return $result;
 	}
-	
 }
 
 
 
 class CMSChild {
+	
 	public $position;
 	public $width;
 	public $rowFlag;
 	
-	
 	public $row = null;
 	public $section = null;
 	public $placeholder = null;
+	
 	
 	function __construct($childJson, $sections) {
 		$this->position = $childJson->position;
@@ -59,10 +59,12 @@ class CMSChild {
 		}
 	}
 	
-	
-	
-	
+
 	function isRow() {
 		return $this->rowFlag;
+	}
+	
+	function getRender() {
+		
 	}
 }

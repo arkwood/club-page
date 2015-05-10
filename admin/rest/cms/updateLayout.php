@@ -1,9 +1,9 @@
 <?php
-if (array_key_exists('newWidth', $_POST)) {
+if (array_key_exists('newLayout', $_POST)) {
 	// update width of a section
-	$id = $_POST["id"];
-	$newWidth = $_POST["newWidth"];
-	mysql_query('update section set width = ' . $newWidth . ' where id = ' . $id);
+	$newLayout = $_POST["newLayout"];
+	$container = new Container($_POST["containerId"]);
+	$container->updateLayout($newLayout);
 	addScriptContent('{ result: 1 }');
 }
 else if (array_key_exists('id', $_POST)) {

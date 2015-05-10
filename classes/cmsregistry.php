@@ -19,9 +19,6 @@ class CMSRegistry {
     }
     
     
-    
-    
-    
     static function getLayoutByIdentifier($identifier) {
     	$layouts = CMSRegistry::getLayouts();
     	return $layouts[$identifier];
@@ -67,6 +64,7 @@ class SectionTypeParameter {
 }
 
 class CMSEditor {
+	
     public $type;
     public $template;
     
@@ -74,12 +72,12 @@ class CMSEditor {
         
     }
     
-    function render($parameter, $parameterType) {
+    function render($parameter, $parameterType, $section) {
     	$twig = $GLOBALS["twig"];
-    	print_r($parameter);
     	return  $twig->render('admin/cms/editors/wysiwyg.html', array(
     			"parameter" => $parameter,
-    			"parameterType" => $parameterType
+    			"parameterType" => $parameterType,
+    			"section" => $section
     	));
     }
     

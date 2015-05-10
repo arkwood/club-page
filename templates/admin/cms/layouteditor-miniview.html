@@ -1,5 +1,4 @@
-{{container.layoutIdentifier}}
-<div class="col-xs-12 layout {% if layout.identifier == container.layout.identifier %}active-layout{% endif %}" data-title="{{layout.identifier}}" data-placement="bottom">
+<div class="col-xs-12 layout {% if layout.identifier == container.layout.identifier %}active-layout{% endif %}" data-identifier="{{layout.identifier}}" data-title="{{layout.identifier}}" data-placement="bottom">
 	{% for row in layout.rows %}
 		<div class="row total-row-{{layout.totalRows}}">
 			{% for child in row.children %}

@@ -18,16 +18,24 @@ else {
     $pageId = $page->ID;
 }
 
-$sections = $page->getSections();
 
-$html = '<div class="row">';
-foreach ($sections as $section) {
-    $layoutClass = ($section->view == 'views/content/page') ? "no-padding" : "";
-   
-    $html .= '<div class="col-xs-12 col-md-' . $section->width . ' ' . $layoutClass . '">';
-    $html .= includeView($section->view . '.php', $twig, $section);
-    $html .= '</div>';
+$html .= $twig->render('cms/page.html', array(
+	"page" => $page
+));
+/*
+foreach ($containers as $container) {
+	$html .= '<div class="row">';
+	foreach ($container->getSections() as $section) {
+		$layoutClass = ($section->view == 'views/content/page') ? "no-padding" : "";
+		 
+		$html .= '<div class="col-xs-12 col-md-' . $section->width . ' ' . $layoutClass . '">';
+		$html .= includeView($section->view . '.php', $twig, $section);
+		$html .= '</div>';
+	}
+	$html .= '</div>';
 }
+*/
+
 
 addScriptContent($html);
 require_once 'index.php';

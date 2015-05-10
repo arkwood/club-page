@@ -1,31 +1,36 @@
 <!--  visible sections -->
 {% for container in page.containers %} 
 	<div class="row layout-container-row" data-active-layout="{{container.layoutIdentifier}}">
-		<div class="col-xs-10">		
+		<div class="col-xs-10 cms-layout-content-area">		
 		 	<div class="row">
 		 		<div class="col-xs-12">
 		 			<!-- layout section -->
 		 			{% for row in container.rows %}
-		 				<div class="row">
+		 				<div class="row total-row-{{container.layout.totalRows}}">
 		 					{% for child in row.children %}
-		 						<div class="col-xs-{{child.width}}">
-		 							{% if child.isRow %}
-	 									<div class="row">
-	 										{% for child in row.row %}
-	 											<div class="col-xs-{{child.width}} section" style="background-color: {{child.section.sectionType.color}};">
-		 											{{child.section.label}}<br/>
-		 											{{child.section.sectionType.label}}
-	 											</div>
-	 										{% endfor %}
-	 									</div>
-	 								{% else %}
-	 									<div class="col-xs-12 section" style="background-color: {{child.section.sectionType.color}};">
-		 									{{child.section.label}}<br/>
+		 						{% if child.rowFlag %}
+		 							<div class="col-xs-{{child.width}} no-padding">
+										{% for subchild in child.row.children %}
+											<div class="col-xs-{{subchild.width}} total-row-{{row.totalRows}}">
+												<div class="section" style="background-color: {{subchild.section.sectionType.color}};">
+													<b>{{subchild.placeholder}}</b><br/>
+													{{subchild.section.label}}<br/>
+													{{subchild.section.sectionType.label}}
+												</div>
+											</div>
+										{% endfor %}
+										
+									</div>
+ 								{% else %}
+ 									<div class="col-xs-{{child.width}}">
+ 										<div class="section" style="background-color: {{child.section.sectionType.color}};">
+ 											<b>{{child.placeholder}}</b><br/>
+	 										{{child.section.label}}<br/>
 		 									{{child.section.sectionType.label}}
-		 								</div>
-		 							{% endif %}
-		 							
-		 						</div>
+ 										</div>
+	 									
+	 								</div>
+	 							{% endif %}
 		 					{% endfor %}
 		 				</div>
 		 			{% endfor %}
@@ -33,7 +38,7 @@
 		 	</div>
 		</div>
 		
-		<div class="col-xs-2 cms-layout-menubar">
+		<div class="col-xs-2 cms-layout-menubar" data-container-id="{{container.ID}}">
 			<div class="cms-layout-menubar-content">
 				{% for layout in layouts %}
 					{% include 'admin/cms/layouteditor-miniview.html' %}
@@ -41,8 +46,12 @@
 			</div>
 		</div>
 	</div>
-{% endfor %}	
+{% endfor %}
 
+
+
+
+<!--  Modal for changing the section type -->
 <div id="cms-layout-modal" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -73,6 +82,30 @@
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 				<button type="button" class="btn btn-primary">Save changes</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!--  Modal for changing the layout of a container -->
+<div id="cms-layout-switch-modal" class="modal fade" data-url="{{BASEURL}}/admin/api.php" data-action="cms/updateLayout">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">Swtich Section</h4>
+			</div>
+			<div class="modal-body">
+				<p>
+				Switching the layout will re-arrange the pre-existing sections. Are you sure you want to switch layout?
+				</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary">
+					Change Layout
+				</button>
 			</div>
 		</div>
 	</div>

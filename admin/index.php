@@ -12,6 +12,9 @@ require_once dirname(__FILE__) . '/../loader.php';
         ?>      
     </head>
     <body>
+    	<div id="spin-template" class="hide">
+    		<span class="fa fa-spinner fa-spin"></span>
+    	</div>
         <div class="container" id="admin">
             <?php
             if (!isset($GLOBALS[GLOBALSCRIPTCONTENT]))
